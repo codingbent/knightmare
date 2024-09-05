@@ -1,11 +1,33 @@
-<html>
- <head>
-  <title>
-   Login Page
-  </title>
-  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <style>
+<?php
+session_start();
+include 'connection.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $sql = "SELECT * FROM customer WHERE email = '$email' AND pass = '$password'";
+    $result = mysqli_query($con, $sql);
+    $row_result = mysqli_fetch_assoc($result);
+   
+    
+    if (!empty($row_result)) {
+        $_SESSION['user_id']=$row_result['user_id'];
+        $_SESSION['email'] = $row_result['email'];
+        $_SESSION['name'] = $row_result['firstname'];
+        $_SESSION['lname'] = $row_result['lastname'];
+        $_SESSION['password'] = $row_result['pass'];
+        $_SESSION['is_admin'] = $row_result['role'];
+        header("Location: index.php"); 
+        exit();
+    } else {
+        echo "<script>alert('Invalid email or password')</script>";
+    }
+}
+mysqli_close($con);
+include 'nav.php';
+?>
+
+  <!-- <style>
    body {
             background-color: #e9eef5;
             font-family: 'Arial', sans-serif;
@@ -97,9 +119,7 @@
         .create-account a {
             color: #0052cc;
         }
-  </style>
- </head>
- <body>
+  </style> -->
   <div class="container">
    <div class="left-panel">
     <div class="logo">
@@ -120,12 +140,12 @@
     <p class="text-center">
      or continue with email
     </p>
-    <form>
+    <form  class="p-3" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
      <div class="form-group">
-      <input class="form-control" placeholder="Email" type="email"/>
+      <input class="form-control" placeholder="Email" type="email" name="email"/>
      </div>
      <div class="form-group">
-      <input class="form-control" placeholder="Password" type="password"/>
+      <input class="form-control" placeholder="Password" type="password" name ="password"/>
      </div>
      <div class="d-flex justify-content-between align-items-center">
       <div class="forgot-password">
@@ -157,5 +177,3 @@
     </p>
    </div>
   </div>
- </body>
-</html>
