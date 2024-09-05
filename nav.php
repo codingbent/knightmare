@@ -87,16 +87,22 @@ $resultcategory=$con->query($sqlcategory);
                                 <span class="visually-hidden">New Alerts</span>
                               </span>
                           </a>';
-                              echo '
-                             <div class="btn-group">
+                          echo '
+                          <div class="btn-group">
                               <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">'
-                              .(@$_SESSION['name']) . 
+                              . @$_SESSION['name'] .
                               '</button>
                               <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" onclick="dashboard(' . @$_SESSION['user_id'] .')">My Profile</a></li>
-                                <li><a class="dropdown-item" href="logout.php" onclick="session_destroy();">Log Out</a></li>
+                                  <li><a class="dropdown-item" onclick="dashboard(' . @$_SESSION['user_id'] . ')">My Profile</a></li>';
+                                  
+                      if (@$_SESSION['is_admin'] == 1) {
+                          echo '<li><a class="dropdown-item" href="admin_dashboard.php">Admin Dashboard</a></li>';
+                      }
+                      
+                      echo '<li><a class="dropdown-item" href="logout.php">Log Out</a></li>
                               </ul>
-                            </div>';
+                          </div>';
+                      
                             echo'<a type="button" class="btn position-relative" href="cart.php">'; 
                               echo '<i class="fa fa-shopping-cart"style="font-size:36px;"></i>';
                               echo '<span class="position-absolute translate-middle badge rounded-pill bg-success" style="top: 10px;left: 50px;">';
@@ -197,11 +203,11 @@ function viewAll(c_id) {
 }
 function dashboard(c_id){
   $.ajax({
-    url:"userdashboard.php",
+    url:"profile.php",
     type:"POST",
     data:{c_id: c_id},
     success:function(){
-      window.location.href="userDashboard.php"
+      window.location.href="profile.php"
     }
   });
   console.log(c_id);
