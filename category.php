@@ -38,19 +38,18 @@ $rowcost = $resultcost->fetch_assoc();
 $maxPrice = $rowcost['max_price'];
 
 if (!empty($search_text)) {
-        $sqlproduct = "SELECT p.*
-                        FROM product p
-                        LEFT JOIN category c ON p.c_id = c.category_id
-                        LEFT JOIN alternate_category ac ON c.category_id = ac.c_id
-                        WHERE p.title LIKE ? OR p.label LIKE ? OR c.category_name LIKE ? OR ac.alternate_names LIKE ?
-                        ";
-                        $like_search_text = '%' . $search_text . '%';
-    
-                        $stmt = $con->prepare($sqlproduct);
-                        $stmt->bind_param("ssss", $like_search_text, $like_search_text, $like_search_text, $like_search_text);
-                        $stmt->execute();
-                        $resultproduct = $stmt->get_result();
-    
+    $sqlproduct = "SELECT p.*
+                    FROM product p
+                    LEFT JOIN category c ON p.c_id = c.category_id
+                    LEFT JOIN alternate_category ac ON c.category_id = ac.c_id
+                    WHERE p.title LIKE ? OR p.label LIKE ? OR c.category_name LIKE ? OR ac.alternate_names LIKE ?";
+    $like_search_text = '%' . $search_text . '%';
+
+    $stmt = $con->prepare($sqlproduct);
+    $stmt->bind_param("ssss", $like_search_text, $like_search_text, $like_search_text, $like_search_text);
+    $stmt->execute();
+    $resultproduct = $stmt->get_result();
+
 } else if (!empty($c_id)) {
     $sqlproduct = "SELECT * FROM product WHERE c_id=?";
     $stmt = $con->prepare($sqlproduct);
@@ -62,52 +61,34 @@ if (!empty($search_text)) {
     $resultproduct = $con->query($sqlproduct);
 }
 
-if (isset($_POST['brands']) && isset($_POST['categories']) && isset($_POST['minPrice']) && isset($_POST['maxPrice'])) {
-$selectedBrands = $_POST['brands'];
-$selectedCategories = $_POST['categories'];
-$minPrice = $_POST['minPrice'];
-$maxPrice = $_POST['maxPrice'];
+if (isset($_POST['categories']) && isset($_POST['minPrice']) && isset($_POST['maxPrice'])) {
+    $selectedCategories = $_POST['categories'];
+    $minPrice = $_POST['minPrice'];
+    $maxPrice = $_POST['maxPrice'];
 }
 
 // Construct SQL query to fetch filtered products
 $sqlProducts = "SELECT p.p_id, p.title, p.label, p.price, p.image 
                FROM product p 
                JOIN category_brand cb ON p.p_id = cb.p_id";
-$resultproduct=$con->query($sqlProducts);
+$resultproduct = $con->query($sqlProducts);
+
 // Conditions based on selected filters
 $whereConditions = [];
-
-if (!empty($selectedBrands)) {
-    $brandFilter = implode(',', $selectedBrands);
-    $whereConditions[] = "cb.brand_id IN ($brandFilter)";
-}
 
 if (!empty($selectedCategories)) {
     $categoryFilter = implode(',', $selectedCategories);
     $whereConditions[] = "cb.c_id IN ($categoryFilter)";
 }
-$sqlBrands = "SELECT DISTINCT b.brand_id, b.brand_name
-              FROM category_brand cb
-              JOIN product p ON cb.p_id = p.p_id
-              JOIN brand b ON cb.brand_id = b.brand_id";
 
-if (isset($_POST['brands']) && !empty($_POST['brands'])) {
-    $brands = implode(',', $_POST['brands']); 
-    $sqlBrands .= " WHERE b.brand_id IN ($brands)";
-}
+// $sqlCategories = "SELECT DISTINCT c.category_id, c.category_name
+//                   FROM category_brand cb
+//                   JOIN category c ON cb.c_id = c.category_id";
 
-$resultBrands = $con->query($sqlBrands);
+// $resultCategories = $con->query($sqlCategories);
 
-$sqlCategories = "SELECT DISTINCT c.category_id, c.category_name
-                  FROM category_brand cb
-                  JOIN category c ON cb.c_id = c.category_id";
-
-if (isset($_POST['brands']) && !empty($_POST['brands'])) {
-    $brands = implode(',', $_POST['brands']); 
-    $sqlCategories .= " WHERE cb.brand_id IN ($brands)";
-}
-
-$resultCategories = $con->query($sqlCategories);
+$sqlcategory = "SELECT * FROM category";
+$resultCategories = $con->query($sqlcategory);
 
 ?>
 
@@ -119,55 +100,30 @@ $resultCategories = $con->query($sqlCategories);
 <form id="filter-form">
     <div class="row">
         <aside class="col-sm-3 ms-5">
-            <div class="card mb-2">
-                <article class="card-group-item">
-                    <header class="card-header">
-                        <h6 class="title">Brands</h6>
-                    </header>
+        <div class="card mb-2">
+    <article class="card-group-item">
+        <header class="card-header"><h6 class="title">Category</h6></header>
+        <div class="filter-content">
+            <div class="list-group list-group-flush ms-4">
+                <div class="m-2">
                     <?php
-                    if ($resultBrands->num_rows > 0) {
-                        $c = 0;
-                        while ($rowBrands = $resultBrands->fetch_assoc()) {
-                            echo '<div class="filter-content ' . ($c >= 5 ? 'hidden' : '') . '">';
-                            echo '<div class="card-body">';
-                            echo '<label class="form-check">';
-                            echo '<input class="form-check-input" type="checkbox" name="brand[]" value="' . $rowBrands['brand_id'] . '">' . $rowBrands['brand_name'];
-                            echo '<span class="form-check-label"></span>';
-                            echo '</label>';
-                            echo '</div>';
-                            echo '</div>';
-                            $c++;
-                        }
-                        if ($c > 5) {
-                            echo '<p><a href="" id="show-more-link" class="link-underline-primary ms-3">Show more</a></p>';
+                    if ($resultCategories->num_rows > 0) {
+                        while ($rowCategories = $resultCategories->fetch_assoc()) {
+                            echo '<input class="form-check-input me-2" type="checkbox" name="category[]" value="' . $rowCategories['category_id'] . '" id="' . $rowCategories['category_name'] . '"';
+                            if (isset($c_id) && $c_id == $rowCategories['category_id']) {
+                                echo ' checked';
+                            }
+                            echo '>';
+                            echo '<label for="' . $rowCategories['category_name'] . '">' . $rowCategories['category_name'] . '</label><br>';                            
                         }
                     }
                     ?>
-                </article>
+                </div>
             </div>
-            <div class="card mb-2">
-                <article class="card-group-item">
-                    <header class="card-header"><h6 class="title">Category</h6></header>
-                    <div class="filter-content">
-                        <div class="list-group list-group-flush ms-4">
-                            <div class="m-2">
-                                <?php
-                                if ($resultCategories->num_rows > 0) {
-                                    while ($rowCategories = $resultCategories->fetch_assoc()) {
-                                        echo '<input class="form-check-input me-2" type="checkbox" name="category[]" value="' . $rowCategories['category_id'] . '" id="' . $rowCategories['category_name'] . '"';
-                                        if ($c_id == $rowCategories['category_id']) {
-                                            echo ' checked';
-                                        }
-                                        echo '>';                                        
-                                        echo '<label for="' . $rowCategories['category_name'] . '">' . $rowCategories['category_name'] . '</label><br>';                            
-                                    }
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
+        </div>
+    </article>
+</div>
+
             <div class="card">
                 <article class="card-group-item">
                     <header class="card-header">
@@ -243,11 +199,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function filterProducts() {
-        var selectedBrands = [];
-        $("input[name='brand[]']:checked").each(function() {
-            selectedBrands.push(this.value);
-        });
-
         var selectedCategories = [];
         $("input[name='category[]']:checked").each(function() {
             selectedCategories.push(this.value);
@@ -260,7 +211,6 @@ document.addEventListener("DOMContentLoaded", function() {
             url: 'filter.php',
             type: 'POST',
             data: {
-                brands: selectedBrands,
                 categories: selectedCategories,
                 minPrice: minPrice,
                 maxPrice: maxPrice
@@ -273,10 +223,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     $(document).ready(function() {
-        $("input[name='brand[]']").change(function() {
-            filterProducts();
-        });
-
         $("input[name='category[]']").change(function() {
             filterProducts();
         });
@@ -297,43 +243,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 $("#minPrice").val(ui.values[0]);
                 $("#maxPrice").val(ui.values[1]);
             },
-            change: function(event, ui) {
-                filterProducts(); 
+            stop: function() {
+                filterProducts();
             }
         });
 
-        $("#minValueDisplay").text("₹" + $("#priceRange").slider("values", 0));
-        $("#maxValueDisplay").text("₹" + $("#priceRange").slider("values", 1));
-
-
-        function resetForm() {
-            $("#filter-form")[0].reset();
-            $("#priceRange").slider("values", [0, maxPrice]);
-            filterProducts();
-            $("#minValueDisplay").text("₹0");
-            $("#maxValueDisplay").text("₹<?php echo $maxPrice?>");
-        }
-        window.resetForm=resetForm;
     });
 
-    function description(p_id) {
-        console.log(p_id);
-    $.ajax({
-    url: "set_session.php",
-    type: "POST",
-    data: {p_id: p_id},
-    success: function(response){
-      window.location.href = "description.php";
-    },
-    error: function(xhr, status, error){
-      console.error(error);
+    function resetForm() {
+        document.getElementById("filter-form").reset();
+        $("#priceRange").slider("values", [0, maxPrice]);
+        filterProducts();
     }
-  });
-  console.log(c_id);
-}
+
 </script>
-<style>
-    .hidden {
-        display: none;
-    }
-</style>
