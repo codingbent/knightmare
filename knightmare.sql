@@ -613,3 +613,66 @@ CREATE TABLE reviews (
     FOREIGN KEY (product_id) REFERENCES product(p_id),  -- Foreign key to product table
     FOREIGN KEY (user_id) REFERENCES users(user_id)     -- Foreign key to user table (if applicable)
 );
+
+
+-- Insert 5 users with role = 1
+INSERT INTO `customer` (`firstname`, `lastname`, `email`, `pass`, `role`)
+VALUES
+('John', 'Doe', 'john1@example.com', 'password123', 1),
+('Jane', 'Doe', 'jane1@example.com', 'password123', 1),
+('Robert', 'Smith', 'robert1@example.com', 'password123', 1),
+('Emily', 'Clark', 'emily1@example.com', 'password123', 1),
+('Michael', 'Johnson', 'michael1@example.com', 'password123', 1);
+
+-- Insert 2 users with role = 2
+INSERT INTO `customer` (`firstname`, `lastname`, `email`, `pass`, `role`)
+VALUES
+('Alice', 'White', 'alice1@example.com', 'password123', 2),
+('Bob', 'Brown', 'bob1@example.com', 'password123', 2);
+
+-- Insert the remaining 43 users with role = 0
+INSERT INTO `customer` (`firstname`, `lastname`, `email`, `pass`, `role`)
+VALUES
+('David', 'Wilson', 'david1@example.com', 'password123', 0),
+('Mary', 'Davis', 'mary1@example.com', 'password123', 0),
+('James', 'Miller', 'james1@example.com', 'password123', 0),
+('Linda', 'Taylor', 'linda1@example.com', 'password123', 0),
+('William', 'Anderson', 'william1@example.com', 'password123', 0),
+('Patricia', 'Thomas', 'patricia1@example.com', 'password123', 0),
+('Richard', 'Jackson', 'richard1@example.com', 'password123', 0),
+('Barbara', 'Moore', 'barbara1@example.com', 'password123', 0),
+('Charles', 'Martin', 'charles1@example.com', 'password123', 0),
+('Jennifer', 'Lee', 'jennifer1@example.com', 'password123', 0),
+('Joseph', 'Harris', 'joseph1@example.com', 'password123', 0),
+('Susan', 'Walker', 'susan1@example.com', 'password123', 0),
+('Thomas', 'Hall', 'thomas1@example.com', 'password123', 0),
+('Jessica', 'Allen', 'jessica1@example.com', 'password123', 0),
+('Christopher', 'Young', 'christopher1@example.com', 'password123', 0),
+('Sarah', 'King', 'sarah1@example.com', 'password123', 0),
+('Daniel', 'Wright', 'daniel1@example.com', 'password123', 0),
+('Karen', 'Scott', 'karen1@example.com', 'password123', 0),
+('Matthew', 'Green', 'matthew1@example.com', 'password123', 0),
+('Nancy', 'Adams', 'nancy1@example.com', 'password123', 0),
+('Anthony', 'Baker', 'anthony1@example.com', 'password123', 0),
+('Betty', 'Nelson', 'betty1@example.com', 'password123', 0),
+('Mark', 'Carter', 'mark1@example.com', 'password123', 0),
+('Lisa', 'Mitchell', 'lisa1@example.com', 'password123', 0),
+('Donald', 'Perez', 'donald1@example.com', 'password123', 0),
+('Dorothy', 'Roberts', 'dorothy1@example.com', 'password123', 0),
+('George', 'Turner', 'george1@example.com', 'password123', 0),
+('Sandra', 'Phillips', 'sandra1@example.com', 'password123', 0),
+('Kenneth', 'Campbell', 'kenneth1@example.com', 'password123', 0),
+('Carol', 'Parker', 'carol1@example.com', 'password123', 0),
+('Steven', 'Evans', 'steven1@example.com', 'password123', 0),
+('Michelle', 'Edwards', 'michelle1@example.com', 'password123', 0),
+('Paul', 'Collins', 'paul1@example.com', 'password123', 0),
+('Sharon', 'Stewart', 'sharon1@example.com', 'password123', 0),
+('Andrew', 'Sanchez', 'andrew1@example.com', 'password123', 0),
+('Laura', 'Morris', 'laura1@example.com', 'password123', 0),
+('Joshua', 'Rogers', 'joshua1@example.com', 'password123', 0),
+('Cynthia', 'Reed', 'cynthia1@example.com', 'password123', 0),
+('Brian', 'Cook', 'brian1@example.com', 'password123', 0),
+('Angela', 'Morgan', 'angela1@example.com', 'password123', 0),
+('Kevin', 'Bell', 'kevin1@example.com', 'password123', 0),
+('Helen', 'Murphy', 'helen1@example.com', 'password123', 0);
+
