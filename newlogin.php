@@ -130,13 +130,16 @@ include 'nav.php';
     <p>
      Welcome back! Select method to log in:
     </p>
-    <div class="social-buttons">
+    <!-- <div class="social-buttons">
      <button class="btn btn-light">
       <i class="fab fa-google">
       </i>
       Google
      </button>
-    </div>
+    </div> -->
+    <a href="google_login.php">
+        <button type='button'>login with google</button>
+    </a>
     <p class="text-center">
      or continue with email
     </p>
@@ -168,7 +171,7 @@ include 'nav.php';
     </div>
    </div>
    <div class="right-panel">
-    <img alt="Illustration of connecting with various applications" src="./images/logo.jpg"/>
+   <img alt="Illustration of connecting with various applications" src="./images/logo.jpg"/>
     <h4>
      Connect Your Store With Google
     </h4>
