@@ -57,7 +57,7 @@ $resultcategory=$con->query($sqlcategory);
 <div class="container">                           
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-                  <a class="navbar-brand fs-3 fw-bold" href="index.php"><img src="images/logo.jpg" style="width:30px;transform:scale(3.2);" alt=""></a>
+                  <a class="navbar-brand fs-3 fw-bold" href="index.php"><img src="images/logo.jpg" style="width: 150px; height: auto; " alt=""></a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
