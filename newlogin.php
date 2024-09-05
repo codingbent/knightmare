@@ -27,12 +27,12 @@ mysqli_close($con);
 include 'nav.php';
 ?>
 
-  <!-- <style>
+  <style>
    body {
             background-color: #e9eef5;
             font-family: 'Arial', sans-serif;
         }
-        .container {
+        .container1 {
             max-width: 900px;
             margin: 50px auto;
             background-color: #fff;
@@ -119,8 +119,8 @@ include 'nav.php';
         .create-account a {
             color: #0052cc;
         }
-  </style> -->
-  <div class="container">
+  </style>
+  <div class="container1">
    <div class="left-panel">
     <div class="logo">
     </div>
@@ -164,7 +164,7 @@ include 'nav.php';
     <div class="create-account">
      <p>
       Don't have an account?
-      <a href="#">
+      <a href="newsignup.php">
        Create an account
       </a>
      </p>

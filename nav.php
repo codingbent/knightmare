@@ -76,7 +76,7 @@ $resultcategory=$con->query($sqlcategory);
                     <div class="icons">
                           <?php
                           if (empty(@$_SESSION['email'])) {
-                              echo '<a href="newlogin.php">Login</a>/<a href="registration.php">Registration</a>';
+                              echo '<a href="newlogin.php">Login</a>/<a href="newsignup.php">Registration</a>';
                           } else {
                             echo '<a type="button" class="btn position-relative" href="favorite.php">
                             <i class="fa fa-heart"style="font-size:36px;"></i>

@@ -1,7 +1,38 @@
 <?php
 include 'connection.php';
 include 'nav.php';
+
+// Check if user_id is set in session
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // Prepare and execute the query
+    $sqlorder = "SELECT o.order_id, o.order_date, o.status, p.title AS product_name, p.price AS product_price, o.quantity
+    FROM orders o
+    JOIN product p ON o.product_id = p.p_id
+    WHERE o.user_id = ?";
+    $stmt = $con->prepare($sqlorder);
+    $stmt->bind_param("i", $user_id);
+
+    // Execute the statement
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Close statement and connection
+    $stmt->close();
+} else {
+    echo "User not logged in.";
+}
+
+mysqli_close($con);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="path/to/bootstrap.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -60,110 +91,101 @@ include 'nav.php';
     </style>
 </head>
 <body>
-        <div class="content">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>User Dashboard</h2>
-            </div>
-            <div class="row mb-4">
-                <div class="col-md-4">
-                    <div class="card p-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Total Purchases</h5>
-                            <h3>$12,345</h3>
-                            <p class="text-success">5% Increase from Last Month</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card p-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Loyalty Points</h5>
-                            <h3>1,230</h3>
-                            <p class="text-success">10% Increase from Last Month</p>
-                            <p>Redeemable Amount: $123</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card p-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Delivery Status</h5>
-                            <div class="mb-3">
-                                <p>Order #12345</p>
-                                <div class="progress">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <p>Order #12346</p>
-                                <div class="progress">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <p>Order #12347</p>
-                                <div class="progress">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>User Dashboard</h2>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Purchases</h5>
+                        <h3>$12,345</h3>
+                        <p class="text-success">5% Increase from Last Month</p>
                     </div>
                 </div>
             </div>
-            <div class="row mb-4">
-                <div class="col-md-12">
-                    <div class="card p-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Order History</h5>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Order ID</th>
-                                        <th>Product</th>
-                                        <th>Purchase Date</th>
-                                        <th>Amount</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>#12345</td>
-                                        <td>MacBook Pro</td>
-                                        <td>01 Jan 2023</td>
-                                        <td>$2,000</td>
-                                        <td class="status delivered">Delivered</td>
-                                    </tr>
-                                    <tr>
-                                        <td>#12346</td>
-                                        <td>iPhone 13</td>
-                                        <td>15 Jan 2023</td>
-                                        <td>$1,000</td>
-                                        <td class="status pending">Pending</td>
-                                    </tr>
-                                    <tr>
-                                        <td>#12347</td>
-                                        <td>Apple Watch</td>
-                                        <td>20 Jan 2023</td>
-                                        <td>$500</td>
-                                        <td class="status cancelled">Cancelled</td>
-                                    </tr>
-                                    <tr>
-                                        <td>#12348</td>
-                                        <td>iPad Pro</td>
-                                        <td>25 Jan 2023</td>
-                                        <td>$800</td>
-                                        <td class="status delivered">Delivered</td>
-                                    </tr>
-                                    <tr>
-                                        <td>#12349</td>
-                                        <td>AirPods</td>
-                                        <td>30 Jan 2023</td>
-                                        <td>$200</td>
-                                        <td class="status delivered">Delivered</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Loyalty Points</h5>
+                        <h3>1,230</h3>
+                        <p class="text-success">10% Increase from Last Month</p>
+                        <p>Redeemable Amount: $123</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Delivery Status</h5>
+                        <div class="mb-3">
+                            <p>Order #12345</p>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                            </div>
                         </div>
+                        <div class="mb-3">
+                            <p>Order #12346</p>
+                            <div class="progress">
+                                <div class="progress-bar bg-secondary" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p>Order #12347</p>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Order History</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Product</th>
+                                    <th>Purchase Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                while ($row = $result->fetch_assoc()) {
+                                    if ($row) {
+                                        // Calculate the difference between current date and order date
+                                        $orderDate = new DateTime($row['order_date']);
+                                        $currentDate = new DateTime();
+                                        $interval = $currentDate->diff($orderDate);
+                                        $days = $interval->days;
+                                        $returnButton = '';
+
+                                        // Check if the order date is within the last 7 days
+                                        if ($days <= 7) {
+                                            $returnButton = '<a href="return_order.php?order_id=' . htmlspecialchars($row['order_id']) . '" class="btn btn-secondary">Return</a>';
+                                        }
+
+                                        echo '<tr>';
+                                        echo '<td>' . htmlspecialchars($row['order_id']) . '</td>';
+                                        echo '<td>' . htmlspecialchars($row['product_name']) . '</td>';
+                                        echo '<td>' . htmlspecialchars($row['order_date']) . '</td>';
+                                        echo '<td>$' . htmlspecialchars($row['product_price']) . '</td>';
+                                        echo '<td class="status ' . htmlspecialchars($row['status']) . '">' . htmlspecialchars($row['status']) . '</td>';
+                                        echo '<td>' . $returnButton . '</td>';
+                                        echo '</tr>';
+                                    }
+                                }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -172,3 +194,5 @@ include 'nav.php';
     <?php
     include 'footer.php';
     ?>
+</body>
+</html>
