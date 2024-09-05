@@ -1,7 +1,6 @@
 <?php 
 include 'connection.php';
 
-
 $sql1 = "SELECT * FROM CATEGORY";
 $result1 = mysqli_query($con, $sql1);
 
