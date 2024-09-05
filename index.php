@@ -27,7 +27,7 @@ $resultcategory=$con->query($sqlcategory);
       </button>
     </div>
    </section>
-   <section class="three container my-5">
+   <section class="three m-4">
     <h4>Shop By Category</h4>
     <div class="d-flex">
     <?php
