@@ -57,14 +57,13 @@ $resultcategory=$con->query($sqlcategory);
 <div class="container">                           
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-                  <a class="navbar-brand fs-3 fw-bold" href="index.php"><img src="images/logo.png" style="width:30px;transform:scale(3.2);" alt=""></a>
+                  <a class="navbar-brand fs-3 fw-bold" href="index.php"><img src="images/logo.jpg" style="width:30px;transform:scale(3.2);" alt=""></a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <form class="d-flex mx-auto "  onsubmit="return false;">
                     <input class="form-control text" id="search_text" type="search" placeholder="Search" aria-label="Search" list="product">
-                        <!-- <datalist id="product">
                         <?php
             if ($resultcat->num_rows > 0) {
                 while ($rowcat = $resultcat->fetch_assoc()) {
@@ -72,13 +71,12 @@ $resultcategory=$con->query($sqlcategory);
                 }
             }
             ?> 
-          </datalist> -->
           <button class="btn btn-outline-success" onclick="search()">Search</button>
         </form>
                     <div class="icons">
                           <?php
                           if (empty(@$_SESSION['email'])) {
-                              echo '<a href="login.php">Login</a>/<a href="registration.php">Registration</a>';
+                              echo '<a href="newlogin.php">Login</a>/<a href="registration.php">Registration</a>';
                           } else {
                             echo '<a type="button" class="btn position-relative" href="favorite.php">
                             <i class="fa fa-heart"style="font-size:36px;"></i>
