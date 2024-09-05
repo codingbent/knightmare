@@ -602,3 +602,14 @@ INSERT INTO `product` (`p_id`, `title`, `label`, `price`, `c_id`, `sub_c_id`) VA
 (104, 'Barilla Pasta', 'Pack of Spaghetti', 6, 10, 48),
 (105, 'Organic Valley Milk', 'Organic Dairy Milk', 7, 10, 49);
 
+CREATE TABLE reviews (
+    review_id INT(11) NOT NULL AUTO_INCREMENT,  -- Unique ID for each review
+    product_id INT(11) NOT NULL,                -- Foreign key referencing product table
+    user_id INT(11) NOT NULL,                   -- Foreign key referencing user table (optional if you track users)
+    rating INT(1) NOT NULL CHECK (rating BETWEEN 1 AND 5),  -- Rating from 1 to 5 stars
+    review_text TEXT,                           -- Optional: Text of the review
+    review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Date and time of the review
+    PRIMARY KEY (review_id),
+    FOREIGN KEY (product_id) REFERENCES product(p_id),  -- Foreign key to product table
+    FOREIGN KEY (user_id) REFERENCES users(user_id)     -- Foreign key to user table (if applicable)
+);
