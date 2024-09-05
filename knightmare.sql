@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 05, 2024 at 02:29 PM
+-- Generation Time: Sep 05, 2024 at 09:38 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -69,24 +69,25 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
-  `category_name` varchar(255) NOT NULL
+  `category_name` varchar(255) NOT NULL,
+  `category image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`category_id`, `category_name`) VALUES
-(1, 'Electronics'),
-(2, 'Home Appliances'),
-(3, 'Fashion'),
-(4, 'Furniture'),
-(5, 'Health & Beauty'),
-(6, 'Sports & Outdoors'),
-(7, 'Toys & Games'),
-(8, 'Books & Media'),
-(9, 'Automotive'),
-(10, 'Food & Beverages');
+INSERT INTO `category` (`category_id`, `category_name`, `category image`) VALUES
+(1, 'Electronics', ''),
+(2, 'Home Appliances', ''),
+(3, 'Fashion', ''),
+(4, 'Furniture', ''),
+(5, 'Health & Beauty', ''),
+(6, 'Sports & Outdoors', ''),
+(7, 'Toys & Games', ''),
+(8, 'Books & Media', ''),
+(9, 'Automotive', ''),
+(10, 'Food & Beverages', '');
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,7 @@ INSERT INTO `category` (`category_id`, `category_name`) VALUES
 
 CREATE TABLE `customer` (
   `user_id` int(11) NOT NULL,
-  `firstname` varchar(10) NOT NULL,
+  `firstname` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
   `pass` varchar(30) NOT NULL,
@@ -110,7 +111,61 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`user_id`, `firstname`, `lastname`, `email`, `pass`, `role`) VALUES
 (1, 'abhed', 'agarwal', 'abhed@gmail.com', '1234567890', 2),
 (2, 'Sandeep', 'Sharma', 'sandeep@gmail.com', '12345', 0),
-(3, 'Nitesh', 'kumar', 'nitesh@gmail.com', 'asdfghjkl', 1);
+(3, 'Nitesh', 'kumar', 'nitesh@gmail.com', 'asdfghjkl', 1),
+(5, 'John', 'Doe', 'john1@example.com', 'password123', 1),
+(6, 'Jane', 'Doe', 'jane1@example.com', 'password123', 1),
+(7, 'Robert', 'Smith', 'robert1@example.com', 'password123', 1),
+(8, 'Emily', 'Clark', 'emily1@example.com', 'password123', 1),
+(9, 'Michael', 'Johnson', 'michael1@example.com', 'password123', 1),
+(52, 'John', 'Doe', 'john1@example.com', 'password123', 1),
+(53, 'Jane', 'Doe', 'jane1@example.com', 'password123', 1),
+(54, 'Robert', 'Smith', 'robert1@example.com', 'password123', 1),
+(55, 'Emily', 'Clark', 'emily1@example.com', 'password123', 1),
+(56, 'Michael', 'Johnson', 'michael1@example.com', 'password123', 1),
+(57, 'Alice', 'White', 'alice1@example.com', 'password123', 2),
+(58, 'Bob', 'Brown', 'bob1@example.com', 'password123', 2),
+(59, 'David', 'Wilson', 'david1@example.com', 'password123', 0),
+(60, 'Mary', 'Davis', 'mary1@example.com', 'password123', 0),
+(61, 'James', 'Miller', 'james1@example.com', 'password123', 0),
+(62, 'Linda', 'Taylor', 'linda1@example.com', 'password123', 0),
+(63, 'William', 'Anderson', 'william1@example.com', 'password123', 0),
+(64, 'Patricia', 'Thomas', 'patricia1@example.com', 'password123', 0),
+(65, 'Richard', 'Jackson', 'richard1@example.com', 'password123', 0),
+(66, 'Barbara', 'Moore', 'barbara1@example.com', 'password123', 0),
+(67, 'Charles', 'Martin', 'charles1@example.com', 'password123', 0),
+(68, 'Jennifer', 'Lee', 'jennifer1@example.com', 'password123', 0),
+(69, 'Joseph', 'Harris', 'joseph1@example.com', 'password123', 0),
+(70, 'Susan', 'Walker', 'susan1@example.com', 'password123', 0),
+(71, 'Thomas', 'Hall', 'thomas1@example.com', 'password123', 0),
+(72, 'Jessica', 'Allen', 'jessica1@example.com', 'password123', 0),
+(73, 'Christopher', 'Young', 'christopher1@example.com', 'password123', 0),
+(74, 'Sarah', 'King', 'sarah1@example.com', 'password123', 0),
+(75, 'Daniel', 'Wright', 'daniel1@example.com', 'password123', 0),
+(76, 'Karen', 'Scott', 'karen1@example.com', 'password123', 0),
+(77, 'Matthew', 'Green', 'matthew1@example.com', 'password123', 0),
+(78, 'Nancy', 'Adams', 'nancy1@example.com', 'password123', 0),
+(79, 'Anthony', 'Baker', 'anthony1@example.com', 'password123', 0),
+(80, 'Betty', 'Nelson', 'betty1@example.com', 'password123', 0),
+(81, 'Mark', 'Carter', 'mark1@example.com', 'password123', 0),
+(82, 'Lisa', 'Mitchell', 'lisa1@example.com', 'password123', 0),
+(83, 'Donald', 'Perez', 'donald1@example.com', 'password123', 0),
+(84, 'Dorothy', 'Roberts', 'dorothy1@example.com', 'password123', 0),
+(85, 'George', 'Turner', 'george1@example.com', 'password123', 0),
+(86, 'Sandra', 'Phillips', 'sandra1@example.com', 'password123', 0),
+(87, 'Kenneth', 'Campbell', 'kenneth1@example.com', 'password123', 0),
+(88, 'Carol', 'Parker', 'carol1@example.com', 'password123', 0),
+(89, 'Steven', 'Evans', 'steven1@example.com', 'password123', 0),
+(90, 'Michelle', 'Edwards', 'michelle1@example.com', 'password123', 0),
+(91, 'Paul', 'Collins', 'paul1@example.com', 'password123', 0),
+(92, 'Sharon', 'Stewart', 'sharon1@example.com', 'password123', 0),
+(93, 'Andrew', 'Sanchez', 'andrew1@example.com', 'password123', 0),
+(94, 'Laura', 'Morris', 'laura1@example.com', 'password123', 0),
+(95, 'Joshua', 'Rogers', 'joshua1@example.com', 'password123', 0),
+(96, 'Cynthia', 'Reed', 'cynthia1@example.com', 'password123', 0),
+(97, 'Brian', 'Cook', 'brian1@example.com', 'password123', 0),
+(98, 'Angela', 'Morgan', 'angela1@example.com', 'password123', 0),
+(99, 'Kevin', 'Bell', 'kevin1@example.com', 'password123', 0),
+(100, 'Helen', 'Murphy', 'helen1@example.com', 'password123', 0);
 
 -- --------------------------------------------------------
 
@@ -159,14 +214,140 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `product` (
   `p_id` int(11) NOT NULL,
-  `title` varchar(20) NOT NULL,
+  `title` varchar(40) NOT NULL,
   `label` varchar(200) NOT NULL,
   `price` int(5) NOT NULL,
-  `image` varchar(250) NOT NULL,
+  `image` varchar(250) DEFAULT NULL,
   `image2` varchar(250) DEFAULT NULL,
   `image3` varchar(250) DEFAULT NULL,
   `c_id` int(11) DEFAULT NULL,
   `sub_c_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`p_id`, `title`, `label`, `price`, `image`, `image2`, `image3`, `c_id`, `sub_c_id`) VALUES
+(1, 'iPhone 13', 'Apple iPhone 13, 128GB, 5G', 999, 'images/iphone15_1.jpg', NULL, NULL, 1, 1),
+(2, 'Samsung Galaxy S21', 'Samsung Galaxy S21, 128GB, 5G', 899, 'images/samsung-galaxy-a34.webp', NULL, NULL, 1, 1),
+(3, 'MacBook Pro', 'Apple MacBook Pro 13-inch, M1 Chip', 1299, NULL, NULL, NULL, 1, 2),
+(4, 'Dell XPS 13', 'Dell XPS 13, 11th Gen Intel Core', 1199, NULL, NULL, NULL, 1, 2),
+(5, 'iPad Pro', 'Apple iPad Pro 12.9-inch, M1 Chip', 1099, NULL, NULL, NULL, 1, 3),
+(6, 'Samsung Galaxy Tab S7', 'Samsung Galaxy Tab S7, 128GB', 699, NULL, NULL, NULL, 1, 3),
+(7, 'Canon EOS R5', 'Canon EOS R5, Mirrorless Camera, 45MP', 3899, NULL, NULL, NULL, 1, 4),
+(8, 'Sony Alpha A7 III', 'Sony Alpha A7 III, Full Frame Mirrorless', 1999, NULL, NULL, NULL, 1, 4),
+(9, 'LG OLED C1', 'LG OLED C1, 55-inch 4K Smart TV', 1299, NULL, NULL, NULL, 1, 5),
+(10, 'Samsung QLED Q80T', 'Samsung QLED Q80T, 65-inch 4K Smart TV', 1399, NULL, NULL, NULL, 1, 5),
+(11, 'LG French Door', 'LG French Door Refrigerator, 28 cu. ft.', 1999, NULL, NULL, NULL, 2, 6),
+(12, 'Samsung Family Hub', 'Samsung Family Hub Refrigerator, 26 cu. ft.', 2299, NULL, NULL, NULL, 2, 6),
+(13, 'Bosch Front Load Washer', 'Bosch 500 Series Front Load Washing Machine', 999, NULL, NULL, NULL, 2, 7),
+(14, 'LG TwinWash', 'LG TwinWash System, 27-inch', 1499, NULL, NULL, NULL, 2, 7),
+(15, 'Daikin Inverter AC', 'Daikin 1.5 Ton 5 Star Inverter Split AC', 799, NULL, NULL, NULL, 2, 8),
+(16, 'LG Dual Inverter AC', 'LG 1.5 Ton Dual Inverter Split AC', 749, NULL, NULL, NULL, 2, 8),
+(17, 'Panasonic Microwave Oven', 'Panasonic Microwave Oven, 1.2 cu. ft.', 199, NULL, NULL, NULL, 2, 9),
+(18, 'Samsung Convection Microwave', 'Samsung 1.1 cu. ft. Convection Microwave', 299, NULL, NULL, NULL, 2, 9),
+(19, 'Dyson V11', 'Dyson V11 Torque Drive Cordless Vacuum', 599, NULL, NULL, NULL, 2, 10),
+(20, 'Shark Navigator', 'Shark Navigator Lift-Away Upright Vacuum', 199, NULL, NULL, NULL, 2, 10),
+(21, 'Levi\'s 501 Jeans', 'Levi\'s 501 Original Fit Jeans for Men', 59, NULL, NULL, NULL, 3, 11),
+(22, 'Nike Air Max Hoodie', 'Nike Air Max Full-Zip Hoodie', 89, NULL, NULL, NULL, 3, 11),
+(23, 'Zara Midi Dress', 'Zara Floral Midi Dress for Women', 79, NULL, NULL, NULL, 3, 12),
+(24, 'H&M Blouse', 'H&M White Blouse for Women', 49, NULL, NULL, NULL, 3, 12),
+(25, 'Nike Air Force 1', 'Nike Air Force 1 Low', 99, NULL, NULL, NULL, 3, 13),
+(26, 'Adidas Ultraboost', 'Adidas Ultraboost Running Shoes', 139, NULL, NULL, NULL, 3, 13),
+(27, 'Ray-Ban Aviators', 'Ray-Ban Aviator Sunglasses, Polarized', 159, NULL, NULL, NULL, 3, 14),
+(28, 'Gucci Leather Belt', 'Gucci Black Leather Belt', 399, NULL, NULL, NULL, 3, 14),
+(29, 'Apple Watch Series 7', 'Apple Watch Series 7, GPS, 41mm', 399, NULL, NULL, NULL, 3, 15),
+(30, 'Rolex Submariner', 'Rolex Submariner Oyster Perpetual', 7999, NULL, NULL, NULL, 3, 15),
+(31, 'IKEA Ektorp Sofa', 'IKEA Ektorp 3-seat Sofa, Beige', 499, NULL, NULL, NULL, 4, 16),
+(32, 'West Elm Coffee Table', 'West Elm Industrial Coffee Table', 299, NULL, NULL, NULL, 4, 16),
+(33, 'Tuft & Needle Mattress', 'Tuft & Needle Queen Mattress, Foam', 699, NULL, NULL, NULL, 4, 17),
+(34, 'Wayfair Bed Frame', 'Wayfair Queen Bed Frame, Upholstered', 399, NULL, NULL, NULL, 4, 17),
+(35, 'Herman Miller Aeron Chair', 'Herman Miller Aeron Ergonomic Office Chair', 1099, NULL, NULL, NULL, 4, 18),
+(36, 'IKEA Bekant Desk', 'IKEA Bekant Adjustable Standing Desk', 299, NULL, NULL, NULL, 4, 18),
+(37, 'Polywood Adirondack Chair', 'Polywood Classic Adirondack Chair', 199, NULL, NULL, NULL, 4, 19),
+(38, 'Trex Outdoor Dining Set', 'Trex 5-piece Outdoor Dining Set', 1499, NULL, NULL, NULL, 4, 19),
+(39, 'Rubbermaid Storage Bins', 'Rubbermaid 18-Gallon Storage Bins, Pack of 6', 79, NULL, NULL, NULL, 4, 20),
+(40, 'ClosetMaid Shelving Unit', 'ClosetMaid 3-tier Storage Shelves', 49, NULL, NULL, NULL, 4, 20),
+(41, 'CeraVe Moisturizing Cream', 'CeraVe Moisturizing Cream for Dry Skin, 16 oz', 17, NULL, NULL, NULL, 5, 21),
+(42, 'The Ordinary Hyaluronic Acid', 'The Ordinary Hyaluronic Acid 2% + B5 Serum', 12, NULL, NULL, NULL, 5, 21),
+(43, 'Olaplex Hair Perfector No. 3', 'Olaplex Hair Perfector No. 3, 3.3 oz', 28, NULL, NULL, NULL, 5, 22),
+(44, 'Dyson Supersonic Hair Dryer', 'Dyson Supersonic Hair Dryer', 399, NULL, NULL, NULL, 5, 22),
+(45, 'Maybelline Fit Me Foundation', 'Maybelline Fit Me Matte + Poreless Foundation', 7, NULL, NULL, NULL, 5, 23),
+(46, 'MAC Lipstick', 'MAC Matte Lipstick in Ruby Woo', 19, NULL, NULL, NULL, 5, 23),
+(47, 'Philips Electric Toothbrush', 'Philips Sonicare ProtectiveClean 6100', 99, NULL, NULL, NULL, 5, 24),
+(48, 'Gillette Fusion ProGlide', 'Gillette Fusion ProGlide Razor with Flexball Technology', 15, NULL, NULL, NULL, 5, 24),
+(49, 'Nature\'s Bounty Fish Oil', 'Nature\'s Bounty Fish Oil 1000mg Softgels', 18, NULL, NULL, NULL, 5, 25),
+(50, 'Fitbit Charge 4', 'Fitbit Charge 4 Fitness and Activity Tracker', 149, NULL, NULL, NULL, 5, 25),
+(51, 'Bowflex Dumbbells', 'Bowflex SelectTech 552 Adjustable Dumbbells', 399, NULL, NULL, NULL, 6, 26),
+(52, 'NordicTrack Treadmill', 'NordicTrack T Series Treadmill', 899, NULL, NULL, NULL, 6, 26),
+(53, 'Coleman Tent', 'Coleman Sundome Camping Tent, 4-person', 119, NULL, NULL, NULL, 6, 27),
+(54, 'YETI Cooler', 'YETI Tundra 45 Cooler', 299, NULL, NULL, NULL, 6, 27),
+(55, 'Nike Dri-FIT T-shirt', 'Nike Men\'s Dri-FIT Short Sleeve Training T-shirt', 35, NULL, NULL, NULL, 6, 28),
+(56, 'Adidas Track Pants', 'Adidas Men\'s Tiro 21 Track Pants', 50, NULL, NULL, NULL, 6, 28),
+(57, 'Schwinn Mountain Bike', 'Schwinn High Timber Youth/Adult Mountain Bike', 349, NULL, NULL, NULL, 6, 29),
+(58, 'Bell Bicycle Helmet', 'Bell Adrenaline Bike Helmet', 45, NULL, NULL, NULL, 6, 29),
+(59, 'Sleeping Bag', 'TETON Sports Celsius Sleeping Bag', 79, NULL, NULL, NULL, 6, 30),
+(60, 'Camping Stove', 'Coleman Gas Camping Stove', 85, NULL, NULL, NULL, 6, 30),
+(61, 'LEGO Classic Bricks', 'LEGO Classic Creative Brick Box', 49, NULL, NULL, NULL, 7, 31),
+(62, 'Melissa & Doug Puzzle', 'Melissa & Doug Wooden Jigsaw Puzzle', 19, NULL, NULL, NULL, 7, 31),
+(63, 'Marvel Avengers Action Figure', 'Marvel Avengers Thor Action Figure', 15, NULL, NULL, NULL, 7, 32),
+(64, 'Transformers Bumblebee', 'Transformers Bumblebee Action Figure', 20, NULL, NULL, NULL, 7, 32),
+(65, 'Monopoly', 'Monopoly Classic Board Game', 25, NULL, NULL, NULL, 7, 33),
+(66, 'Catan', 'Catan The Board Game', 49, NULL, NULL, NULL, 7, 33),
+(67, 'Ravensburger Puzzle', 'Ravensburger 1000 Piece Puzzle', 22, NULL, NULL, NULL, 7, 34),
+(68, '3D Wooden Puzzle', '3D Wooden Mechanical Puzzle', 35, NULL, NULL, NULL, 7, 34),
+(69, 'LEGO Mindstorms', 'Educational Robotics Kit', 300, NULL, NULL, NULL, 7, 31),
+(70, 'Melissa & Doug Puzzle', 'Wooden Educational Puzzle', 50, NULL, NULL, NULL, 7, 31),
+(71, 'Marvel Spider-Man Figure', 'Action Figure', 25, NULL, NULL, NULL, 7, 32),
+(72, 'Star Wars Darth Vader Figure', 'Action Figure', 30, NULL, NULL, NULL, 7, 32),
+(73, 'Monopoly Classic', 'Board Game', 35, NULL, NULL, NULL, 7, 33),
+(74, 'Catan', 'Board Game', 40, NULL, NULL, NULL, 7, 33),
+(75, 'Ravensburger Puzzle', '1000-Piece Puzzle', 20, NULL, NULL, NULL, 7, 34),
+(76, 'Buffalo Games Puzzle', '500-Piece Puzzle', 15, NULL, NULL, NULL, 7, 34),
+(77, 'Nerf Super Soaker', 'Outdoor Toy Water Gun', 25, NULL, NULL, NULL, 7, 35),
+(78, 'Little Tikes Trampoline', 'Outdoor Trampoline', 150, NULL, NULL, NULL, 7, 35),
+(79, 'The Great Gatsby', 'Fiction Novel by F. Scott Fitzgerald', 15, NULL, NULL, NULL, 8, 36),
+(80, '1984', 'Fiction Novel by George Orwell', 12, NULL, NULL, NULL, 8, 36),
+(81, 'Sapiens', 'Non-Fiction Book by Yuval Noah Harari', 20, NULL, NULL, NULL, 8, 37),
+(82, 'Educated', 'Non-Fiction Memoir by Tara Westover', 18, NULL, NULL, NULL, 8, 37),
+(83, 'The Very Hungry Caterpillar', 'Children\'s Educational Book', 10, NULL, NULL, NULL, 8, 38),
+(84, 'Basic Economics', 'Educational Book by Thomas Sowell', 25, NULL, NULL, NULL, 8, 38),
+(85, 'Abbey Road', 'Music Album by The Beatles', 30, NULL, NULL, NULL, 8, 39),
+(86, 'Thriller', 'Music Album by Michael Jackson', 28, NULL, NULL, NULL, 8, 39),
+(87, 'The Godfather', 'Classic Movie DVD', 20, NULL, NULL, NULL, 8, 40),
+(88, 'Inception', 'Sci-Fi Movie Blu-Ray', 22, NULL, NULL, NULL, 8, 40),
+(89, 'WeatherTech Floor Mats', 'Car Floor Mats', 80, NULL, NULL, NULL, 9, 41),
+(90, 'Garmin GPS', 'Car Navigation System', 120, NULL, NULL, NULL, 9, 41),
+(91, 'Bell Qualifier Helmet', 'Motorcycle Helmet', 150, NULL, NULL, NULL, 9, 42),
+(92, 'Alpinestars Motorcycle Jacket', 'Riding Jacket', 200, NULL, NULL, NULL, 9, 42),
+(93, 'DeWalt Power Drill', 'Cordless Power Drill', 100, NULL, NULL, NULL, 9, 43),
+(94, 'Craftsman Tool Set', 'Mechanic Tool Set', 120, NULL, NULL, NULL, 9, 43),
+(95, 'Pioneer Car Stereo', 'Car Audio System', 250, NULL, NULL, NULL, 9, 44),
+(96, 'Kenwood Amplifier', 'Car Audio Amplifier', 200, NULL, NULL, NULL, 9, 44),
+(97, 'Bosch Spark Plugs', 'Car Engine Spark Plugs', 20, NULL, NULL, NULL, 9, 45),
+(98, 'K&N Air Filter', 'Car Engine Air Filter', 50, NULL, NULL, NULL, 9, 45),
+(99, 'Doritos Nacho Cheese', 'Snack Pack', 5, NULL, NULL, NULL, 10, 46),
+(100, 'KIND Bars', 'Healthy Snack Bars', 10, NULL, NULL, NULL, 10, 46),
+(101, 'Coca-Cola', 'Beverage', 2, NULL, NULL, NULL, 10, 47),
+(102, 'Red Bull', 'Energy Drink', 3, NULL, NULL, NULL, 10, 47),
+(103, 'Kellogg\'s Corn Flakes', 'Breakfast Cereal', 4, NULL, NULL, NULL, 10, 48),
+(104, 'Barilla Pasta', 'Pack of Spaghetti', 6, NULL, NULL, NULL, 10, 48),
+(105, 'Organic Valley Milk', 'Organic Dairy Milk', 7, NULL, NULL, NULL, 10, 49);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `review_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `rating` int(1) NOT NULL CHECK (`rating` between 1 and 5),
+  `review_text` text DEFAULT NULL,
+  `review_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -303,6 +484,14 @@ ALTER TABLE `product`
   ADD KEY `fk_subcategory_id` (`sub_c_id`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `sales_order`
 --
 ALTER TABLE `sales_order`
@@ -342,7 +531,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `favorite`
@@ -360,7 +549,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sales_order`
@@ -406,6 +601,13 @@ ALTER TABLE `product`
   ADD CONSTRAINT `fk_subcategory_id` FOREIGN KEY (`sub_c_id`) REFERENCES `sub_category` (`sub_c_id`);
 
 --
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`p_id`),
+  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `customer` (`user_id`);
+
+--
 -- Constraints for table `sales_order`
 --
 ALTER TABLE `sales_order`
@@ -421,258 +623,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-INSERT INTO `product` (`p_id`, `title`, `label`, `price`, `c_id`, `sub_c_id`) VALUES
--- Electronics - Smartphones
-(1, 'iPhone 13', 'Apple iPhone 13, 128GB, 5G', 999, 1, 1),
-(2, 'Samsung Galaxy S21', 'Samsung Galaxy S21, 128GB, 5G', 899, 1, 1),
-
--- Electronics - Laptops
-(3, 'MacBook Pro', 'Apple MacBook Pro 13-inch, M1 Chip', 1299, 1, 2),
-(4, 'Dell XPS 13', 'Dell XPS 13, 11th Gen Intel Core', 1199, 1, 2),
-
--- Electronics - Tablets
-(5, 'iPad Pro', 'Apple iPad Pro 12.9-inch, M1 Chip', 1099, 1, 3),
-(6, 'Samsung Galaxy Tab S7', 'Samsung Galaxy Tab S7, 128GB', 699, 1, 3),
-
--- Electronics - Cameras
-(7, 'Canon EOS R5', 'Canon EOS R5, Mirrorless Camera, 45MP', 3899, 1, 4),
-(8, 'Sony Alpha A7 III', 'Sony Alpha A7 III, Full Frame Mirrorless', 1999, 1, 4),
-
--- Electronics - Televisions
-(9, 'LG OLED C1', 'LG OLED C1, 55-inch 4K Smart TV', 1299, 1, 5),
-(10, 'Samsung QLED Q80T', 'Samsung QLED Q80T, 65-inch 4K Smart TV', 1399, 1, 5),
-
--- Home Appliances - Refrigerators
-(11, 'LG French Door', 'LG French Door Refrigerator, 28 cu. ft.', 1999, 2, 6),
-(12, 'Samsung Family Hub', 'Samsung Family Hub Refrigerator, 26 cu. ft.', 2299, 2, 6),
-
--- Home Appliances - Washing Machines
-(13, 'Bosch Front Load Washer', 'Bosch 500 Series Front Load Washing Machine', 999, 2, 7),
-(14, 'LG TwinWash', 'LG TwinWash System, 27-inch', 1499, 2, 7),
-
--- Home Appliances - Air Conditioners
-(15, 'Daikin Inverter AC', 'Daikin 1.5 Ton 5 Star Inverter Split AC', 799, 2, 8),
-(16, 'LG Dual Inverter AC', 'LG 1.5 Ton Dual Inverter Split AC', 749, 2, 8),
-
--- Home Appliances - Microwave Ovens
-(17, 'Panasonic Microwave Oven', 'Panasonic Microwave Oven, 1.2 cu. ft.', 199, 2, 9),
-(18, 'Samsung Convection Microwave', 'Samsung 1.1 cu. ft. Convection Microwave', 299, 2, 9),
-
--- Home Appliances - Vacuum Cleaners
-(19, 'Dyson V11', 'Dyson V11 Torque Drive Cordless Vacuum', 599, 2, 10),
-(20, 'Shark Navigator', 'Shark Navigator Lift-Away Upright Vacuum', 199, 2, 10),
-
--- Fashion - Men's Clothing
-(21, 'Levi\'s 501 Jeans', 'Levi\'s 501 Original Fit Jeans for Men', 59, 3, 11),
-(22, 'Nike Air Max Hoodie', 'Nike Air Max Full-Zip Hoodie', 89, 3, 11),
-
--- Fashion - Women's Clothing
-(23, 'Zara Midi Dress', 'Zara Floral Midi Dress for Women', 79, 3, 12),
-(24, 'H&M Blouse', 'H&M White Blouse for Women', 49, 3, 12),
-
--- Fashion - Footwear
-(25, 'Nike Air Force 1', 'Nike Air Force 1 Low', 99, 3, 13),
-(26, 'Adidas Ultraboost', 'Adidas Ultraboost Running Shoes', 139, 3, 13),
-
--- Fashion - Accessories
-(27, 'Ray-Ban Aviators', 'Ray-Ban Aviator Sunglasses, Polarized', 159, 3, 14),
-(28, 'Gucci Leather Belt', 'Gucci Black Leather Belt', 399, 3, 14),
-
--- Fashion - Watches
-(29, 'Apple Watch Series 7', 'Apple Watch Series 7, GPS, 41mm', 399, 3, 15),
-(30, 'Rolex Submariner', 'Rolex Submariner Oyster Perpetual', 7999, 3, 15),
-
--- Furniture - Living Room
-(31, 'IKEA Ektorp Sofa', 'IKEA Ektorp 3-seat Sofa, Beige', 499, 4, 16),
-(32, 'West Elm Coffee Table', 'West Elm Industrial Coffee Table', 299, 4, 16),
-
--- Furniture - Bedroom
-(33, 'Tuft & Needle Mattress', 'Tuft & Needle Queen Mattress, Foam', 699, 4, 17),
-(34, 'Wayfair Bed Frame', 'Wayfair Queen Bed Frame, Upholstered', 399, 4, 17),
-
--- Furniture - Office Furniture
-(35, 'Herman Miller Aeron Chair', 'Herman Miller Aeron Ergonomic Office Chair', 1099, 4, 18),
-(36, 'IKEA Bekant Desk', 'IKEA Bekant Adjustable Standing Desk', 299, 4, 18),
-
--- Furniture - Outdoor Furniture
-(37, 'Polywood Adirondack Chair', 'Polywood Classic Adirondack Chair', 199, 4, 19),
-(38, 'Trex Outdoor Dining Set', 'Trex 5-piece Outdoor Dining Set', 1499, 4, 19),
-
--- Furniture - Storage Solutions
-(39, 'Rubbermaid Storage Bins', 'Rubbermaid 18-Gallon Storage Bins, Pack of 6', 79, 4, 20),
-(40, 'ClosetMaid Shelving Unit', 'ClosetMaid 3-tier Storage Shelves', 49, 4, 20),
-
--- Health & Beauty - Skincare
-(41, 'CeraVe Moisturizing Cream', 'CeraVe Moisturizing Cream for Dry Skin, 16 oz', 17, 5, 21),
-(42, 'The Ordinary Hyaluronic Acid', 'The Ordinary Hyaluronic Acid 2% + B5 Serum', 12, 5, 21),
-
--- Health & Beauty - Haircare
-(43, 'Olaplex Hair Perfector No. 3', 'Olaplex Hair Perfector No. 3, 3.3 oz', 28, 5, 22),
-(44, 'Dyson Supersonic Hair Dryer', 'Dyson Supersonic Hair Dryer', 399, 5, 22),
-(45, 'Maybelline Fit Me Foundation', 'Maybelline Fit Me Matte + Poreless Foundation', 7, 5, 23),
-(46, 'MAC Lipstick', 'MAC Matte Lipstick in Ruby Woo', 19, 5, 23),
-
--- Health & Beauty - Personal Care
-(47, 'Philips Electric Toothbrush', 'Philips Sonicare ProtectiveClean 6100', 99, 5, 24),
-(48, 'Gillette Fusion ProGlide', 'Gillette Fusion ProGlide Razor with Flexball Technology', 15, 5, 24),
-
--- Health & Beauty - Wellness Products
-(49, 'Nature\'s Bounty Fish Oil', 'Nature\'s Bounty Fish Oil 1000mg Softgels', 18, 5, 25),
-(50, 'Fitbit Charge 4', 'Fitbit Charge 4 Fitness and Activity Tracker', 149, 5, 25),
-
--- Sports & Outdoors - Exercise Equipment
-(51, 'Bowflex Dumbbells', 'Bowflex SelectTech 552 Adjustable Dumbbells', 399, 6, 26),
-(52, 'NordicTrack Treadmill', 'NordicTrack T Series Treadmill', 899, 6, 26),
-
--- Sports & Outdoors - Outdoor Gear
-(53, 'Coleman Tent', 'Coleman Sundome Camping Tent, 4-person', 119, 6, 27),
-(54, 'YETI Cooler', 'YETI Tundra 45 Cooler', 299, 6, 27),
-
--- Sports & Outdoors - Sports Apparel
-(55, 'Nike Dri-FIT T-shirt', 'Nike Men\'s Dri-FIT Short Sleeve Training T-shirt', 35, 6, 28),
-(56, 'Adidas Track Pants', 'Adidas Men\'s Tiro 21 Track Pants', 50, 6, 28),
-
--- Sports & Outdoors - Cycling
-(57, 'Schwinn Mountain Bike', 'Schwinn High Timber Youth/Adult Mountain Bike', 349, 6, 29),
-(58, 'Bell Bicycle Helmet', 'Bell Adrenaline Bike Helmet', 45, 6, 29),
-
--- Sports & Outdoors - Camping Equipment
-(59, 'Sleeping Bag', 'TETON Sports Celsius Sleeping Bag', 79, 6, 30),
-(60, 'Camping Stove', 'Coleman Gas Camping Stove', 85, 6, 30),
-
--- Toys & Games - Educational Toys
-(61, 'LEGO Classic Bricks', 'LEGO Classic Creative Brick Box', 49, 7, 31),
-(62, 'Melissa & Doug Puzzle', 'Melissa & Doug Wooden Jigsaw Puzzle', 19, 7, 31),
-
--- Toys & Games - Action Figures
-(63, 'Marvel Avengers Action Figure', 'Marvel Avengers Thor Action Figure', 15, 7, 32),
-(64, 'Transformers Bumblebee', 'Transformers Bumblebee Action Figure', 20, 7, 32),
-
--- Toys & Games - Board Games
-(65, 'Monopoly', 'Monopoly Classic Board Game', 25, 7, 33),
-(66, 'Catan', 'Catan The Board Game', 49, 7, 33),
-
--- Toys & Games - Puzzles
-(67, 'Ravensburger Puzzle', 'Ravensburger 1000 Piece Puzzle', 22, 7, 34),
-(68, '3D Wooden Puzzle', '3D Wooden Mechanical Puzzle', 35, 7, 34),
-
--- Toys & Games - Outdoor Toys
-
-(69, 'LEGO Mindstorms', 'Educational Robotics Kit', 300, 7, 31),
-(70, 'Melissa & Doug Puzzle', 'Wooden Educational Puzzle', 50, 7, 31),
-(71, 'Marvel Spider-Man Figure', 'Action Figure', 25, 7, 32),
-(72, 'Star Wars Darth Vader Figure', 'Action Figure', 30, 7, 32),
-(73, 'Monopoly Classic', 'Board Game', 35, 7, 33),
-(74, 'Catan', 'Board Game', 40, 7, 33),
-(75, 'Ravensburger Puzzle', '1000-Piece Puzzle', 20, 7, 34),
-(76, 'Buffalo Games Puzzle', '500-Piece Puzzle', 15, 7, 34),
-(77, 'Nerf Super Soaker', 'Outdoor Toy Water Gun', 25, 7, 35),
-(78, 'Little Tikes Trampoline', 'Outdoor Trampoline', 150, 7, 35),
-
--- Books & Media
-(79, 'The Great Gatsby', 'Fiction Novel by F. Scott Fitzgerald', 15, 8, 36),
-(80, '1984', 'Fiction Novel by George Orwell', 12, 8, 36),
-(81, 'Sapiens', 'Non-Fiction Book by Yuval Noah Harari', 20, 8, 37),
-(82, 'Educated', 'Non-Fiction Memoir by Tara Westover', 18, 8, 37),
-(83, 'The Very Hungry Caterpillar', 'Children\'s Educational Book', 10, 8, 38),
-(84, 'Basic Economics', 'Educational Book by Thomas Sowell', 25, 8, 38),
-(85, 'Abbey Road', 'Music Album by The Beatles', 30, 8, 39),
-(86, 'Thriller', 'Music Album by Michael Jackson', 28, 8, 39),
-(87, 'The Godfather', 'Classic Movie DVD', 20, 8, 40),
-(88, 'Inception', 'Sci-Fi Movie Blu-Ray', 22, 8, 40),
-
--- Automotive
-(89, 'WeatherTech Floor Mats', 'Car Floor Mats', 80, 9, 41),
-(90, 'Garmin GPS', 'Car Navigation System', 120, 9, 41),
-(91, 'Bell Qualifier Helmet', 'Motorcycle Helmet', 150, 9, 42),
-(92, 'Alpinestars Motorcycle Jacket', 'Riding Jacket', 200, 9, 42),
-(93, 'DeWalt Power Drill', 'Cordless Power Drill', 100, 9, 43),
-(94, 'Craftsman Tool Set', 'Mechanic Tool Set', 120, 9, 43),
-(95, 'Pioneer Car Stereo', 'Car Audio System', 250, 9, 44),
-(96, 'Kenwood Amplifier', 'Car Audio Amplifier', 200, 9, 44),
-(97, 'Bosch Spark Plugs', 'Car Engine Spark Plugs', 20, 9, 45),
-(98, 'K&N Air Filter', 'Car Engine Air Filter', 50, 9, 45),
-
--- Food & Beverages
-(99, 'Doritos Nacho Cheese', 'Snack Pack', 5, 10, 46),
-(100, 'KIND Bars', 'Healthy Snack Bars', 10, 10, 46),
-(101, 'Coca-Cola', 'Beverage', 2, 10, 47),
-(102, 'Red Bull', 'Energy Drink', 3, 10, 47),
-(103, 'Kellogg\'s Corn Flakes', 'Breakfast Cereal', 4, 10, 48),
-(104, 'Barilla Pasta', 'Pack of Spaghetti', 6, 10, 48),
-(105, 'Organic Valley Milk', 'Organic Dairy Milk', 7, 10, 49);
-
-CREATE TABLE reviews (
-    review_id INT(11) NOT NULL AUTO_INCREMENT,  -- Unique ID for each review
-    product_id INT(11) NOT NULL,                -- Foreign key referencing product table
-    user_id INT(11) NOT NULL,                   -- Foreign key referencing user table (optional if you track users)
-    rating INT(1) NOT NULL CHECK (rating BETWEEN 1 AND 5),  -- Rating from 1 to 5 stars
-    review_text TEXT,                           -- Optional: Text of the review
-    review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- Date and time of the review
-    PRIMARY KEY (review_id),
-    FOREIGN KEY (product_id) REFERENCES product(p_id),  -- Foreign key to product table
-    FOREIGN KEY (user_id) REFERENCES users(user_id)     -- Foreign key to user table (if applicable)
-);
-
-
--- Insert 5 users with role = 1
-INSERT INTO `customer` (`firstname`, `lastname`, `email`, `pass`, `role`)
-VALUES
-('John', 'Doe', 'john1@example.com', 'password123', 1),
-('Jane', 'Doe', 'jane1@example.com', 'password123', 1),
-('Robert', 'Smith', 'robert1@example.com', 'password123', 1),
-('Emily', 'Clark', 'emily1@example.com', 'password123', 1),
-('Michael', 'Johnson', 'michael1@example.com', 'password123', 1);
-
--- Insert 2 users with role = 2
-INSERT INTO `customer` (`firstname`, `lastname`, `email`, `pass`, `role`)
-VALUES
-('Alice', 'White', 'alice1@example.com', 'password123', 2),
-('Bob', 'Brown', 'bob1@example.com', 'password123', 2);
-
--- Insert the remaining 43 users with role = 0
-INSERT INTO `customer` (`firstname`, `lastname`, `email`, `pass`, `role`)
-VALUES
-('David', 'Wilson', 'david1@example.com', 'password123', 0),
-('Mary', 'Davis', 'mary1@example.com', 'password123', 0),
-('James', 'Miller', 'james1@example.com', 'password123', 0),
-('Linda', 'Taylor', 'linda1@example.com', 'password123', 0),
-('William', 'Anderson', 'william1@example.com', 'password123', 0),
-('Patricia', 'Thomas', 'patricia1@example.com', 'password123', 0),
-('Richard', 'Jackson', 'richard1@example.com', 'password123', 0),
-('Barbara', 'Moore', 'barbara1@example.com', 'password123', 0),
-('Charles', 'Martin', 'charles1@example.com', 'password123', 0),
-('Jennifer', 'Lee', 'jennifer1@example.com', 'password123', 0),
-('Joseph', 'Harris', 'joseph1@example.com', 'password123', 0),
-('Susan', 'Walker', 'susan1@example.com', 'password123', 0),
-('Thomas', 'Hall', 'thomas1@example.com', 'password123', 0),
-('Jessica', 'Allen', 'jessica1@example.com', 'password123', 0),
-('Christopher', 'Young', 'christopher1@example.com', 'password123', 0),
-('Sarah', 'King', 'sarah1@example.com', 'password123', 0),
-('Daniel', 'Wright', 'daniel1@example.com', 'password123', 0),
-('Karen', 'Scott', 'karen1@example.com', 'password123', 0),
-('Matthew', 'Green', 'matthew1@example.com', 'password123', 0),
-('Nancy', 'Adams', 'nancy1@example.com', 'password123', 0),
-('Anthony', 'Baker', 'anthony1@example.com', 'password123', 0),
-('Betty', 'Nelson', 'betty1@example.com', 'password123', 0),
-('Mark', 'Carter', 'mark1@example.com', 'password123', 0),
-('Lisa', 'Mitchell', 'lisa1@example.com', 'password123', 0),
-('Donald', 'Perez', 'donald1@example.com', 'password123', 0),
-('Dorothy', 'Roberts', 'dorothy1@example.com', 'password123', 0),
-('George', 'Turner', 'george1@example.com', 'password123', 0),
-('Sandra', 'Phillips', 'sandra1@example.com', 'password123', 0),
-('Kenneth', 'Campbell', 'kenneth1@example.com', 'password123', 0),
-('Carol', 'Parker', 'carol1@example.com', 'password123', 0),
-('Steven', 'Evans', 'steven1@example.com', 'password123', 0),
-('Michelle', 'Edwards', 'michelle1@example.com', 'password123', 0),
-('Paul', 'Collins', 'paul1@example.com', 'password123', 0),
-('Sharon', 'Stewart', 'sharon1@example.com', 'password123', 0),
-('Andrew', 'Sanchez', 'andrew1@example.com', 'password123', 0),
-('Laura', 'Morris', 'laura1@example.com', 'password123', 0),
-('Joshua', 'Rogers', 'joshua1@example.com', 'password123', 0),
-('Cynthia', 'Reed', 'cynthia1@example.com', 'password123', 0),
-('Brian', 'Cook', 'brian1@example.com', 'password123', 0),
-('Angela', 'Morgan', 'angela1@example.com', 'password123', 0),
-('Kevin', 'Bell', 'kevin1@example.com', 'password123', 0),
-('Helen', 'Murphy', 'helen1@example.com', 'password123', 0);
-
