@@ -61,5 +61,4 @@ $resultcategory=$con->query($sqlcategory);
   });
   console.log(c_id);
 }
-//abhedddddd
-    </script>
+</script>
