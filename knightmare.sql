@@ -421,3 +421,184 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO `product` (`p_id`, `title`, `label`, `price`, `c_id`, `sub_c_id`) VALUES
+-- Electronics - Smartphones
+(1, 'iPhone 13', 'Apple iPhone 13, 128GB, 5G', 999, 1, 1),
+(2, 'Samsung Galaxy S21', 'Samsung Galaxy S21, 128GB, 5G', 899, 1, 1),
+
+-- Electronics - Laptops
+(3, 'MacBook Pro', 'Apple MacBook Pro 13-inch, M1 Chip', 1299, 1, 2),
+(4, 'Dell XPS 13', 'Dell XPS 13, 11th Gen Intel Core', 1199, 1, 2),
+
+-- Electronics - Tablets
+(5, 'iPad Pro', 'Apple iPad Pro 12.9-inch, M1 Chip', 1099, 1, 3),
+(6, 'Samsung Galaxy Tab S7', 'Samsung Galaxy Tab S7, 128GB', 699, 1, 3),
+
+-- Electronics - Cameras
+(7, 'Canon EOS R5', 'Canon EOS R5, Mirrorless Camera, 45MP', 3899, 1, 4),
+(8, 'Sony Alpha A7 III', 'Sony Alpha A7 III, Full Frame Mirrorless', 1999, 1, 4),
+
+-- Electronics - Televisions
+(9, 'LG OLED C1', 'LG OLED C1, 55-inch 4K Smart TV', 1299, 1, 5),
+(10, 'Samsung QLED Q80T', 'Samsung QLED Q80T, 65-inch 4K Smart TV', 1399, 1, 5),
+
+-- Home Appliances - Refrigerators
+(11, 'LG French Door', 'LG French Door Refrigerator, 28 cu. ft.', 1999, 2, 6),
+(12, 'Samsung Family Hub', 'Samsung Family Hub Refrigerator, 26 cu. ft.', 2299, 2, 6),
+
+-- Home Appliances - Washing Machines
+(13, 'Bosch Front Load Washer', 'Bosch 500 Series Front Load Washing Machine', 999, 2, 7),
+(14, 'LG TwinWash', 'LG TwinWash System, 27-inch', 1499, 2, 7),
+
+-- Home Appliances - Air Conditioners
+(15, 'Daikin Inverter AC', 'Daikin 1.5 Ton 5 Star Inverter Split AC', 799, 2, 8),
+(16, 'LG Dual Inverter AC', 'LG 1.5 Ton Dual Inverter Split AC', 749, 2, 8),
+
+-- Home Appliances - Microwave Ovens
+(17, 'Panasonic Microwave Oven', 'Panasonic Microwave Oven, 1.2 cu. ft.', 199, 2, 9),
+(18, 'Samsung Convection Microwave', 'Samsung 1.1 cu. ft. Convection Microwave', 299, 2, 9),
+
+-- Home Appliances - Vacuum Cleaners
+(19, 'Dyson V11', 'Dyson V11 Torque Drive Cordless Vacuum', 599, 2, 10),
+(20, 'Shark Navigator', 'Shark Navigator Lift-Away Upright Vacuum', 199, 2, 10),
+
+-- Fashion - Men's Clothing
+(21, 'Levi\'s 501 Jeans', 'Levi\'s 501 Original Fit Jeans for Men', 59, 3, 11),
+(22, 'Nike Air Max Hoodie', 'Nike Air Max Full-Zip Hoodie', 89, 3, 11),
+
+-- Fashion - Women's Clothing
+(23, 'Zara Midi Dress', 'Zara Floral Midi Dress for Women', 79, 3, 12),
+(24, 'H&M Blouse', 'H&M White Blouse for Women', 49, 3, 12),
+
+-- Fashion - Footwear
+(25, 'Nike Air Force 1', 'Nike Air Force 1 Low', 99, 3, 13),
+(26, 'Adidas Ultraboost', 'Adidas Ultraboost Running Shoes', 139, 3, 13),
+
+-- Fashion - Accessories
+(27, 'Ray-Ban Aviators', 'Ray-Ban Aviator Sunglasses, Polarized', 159, 3, 14),
+(28, 'Gucci Leather Belt', 'Gucci Black Leather Belt', 399, 3, 14),
+
+-- Fashion - Watches
+(29, 'Apple Watch Series 7', 'Apple Watch Series 7, GPS, 41mm', 399, 3, 15),
+(30, 'Rolex Submariner', 'Rolex Submariner Oyster Perpetual', 7999, 3, 15),
+
+-- Furniture - Living Room
+(31, 'IKEA Ektorp Sofa', 'IKEA Ektorp 3-seat Sofa, Beige', 499, 4, 16),
+(32, 'West Elm Coffee Table', 'West Elm Industrial Coffee Table', 299, 4, 16),
+
+-- Furniture - Bedroom
+(33, 'Tuft & Needle Mattress', 'Tuft & Needle Queen Mattress, Foam', 699, 4, 17),
+(34, 'Wayfair Bed Frame', 'Wayfair Queen Bed Frame, Upholstered', 399, 4, 17),
+
+-- Furniture - Office Furniture
+(35, 'Herman Miller Aeron Chair', 'Herman Miller Aeron Ergonomic Office Chair', 1099, 4, 18),
+(36, 'IKEA Bekant Desk', 'IKEA Bekant Adjustable Standing Desk', 299, 4, 18),
+
+-- Furniture - Outdoor Furniture
+(37, 'Polywood Adirondack Chair', 'Polywood Classic Adirondack Chair', 199, 4, 19),
+(38, 'Trex Outdoor Dining Set', 'Trex 5-piece Outdoor Dining Set', 1499, 4, 19),
+
+-- Furniture - Storage Solutions
+(39, 'Rubbermaid Storage Bins', 'Rubbermaid 18-Gallon Storage Bins, Pack of 6', 79, 4, 20),
+(40, 'ClosetMaid Shelving Unit', 'ClosetMaid 3-tier Storage Shelves', 49, 4, 20),
+
+-- Health & Beauty - Skincare
+(41, 'CeraVe Moisturizing Cream', 'CeraVe Moisturizing Cream for Dry Skin, 16 oz', 17, 5, 21),
+(42, 'The Ordinary Hyaluronic Acid', 'The Ordinary Hyaluronic Acid 2% + B5 Serum', 12, 5, 21),
+
+-- Health & Beauty - Haircare
+(43, 'Olaplex Hair Perfector No. 3', 'Olaplex Hair Perfector No. 3, 3.3 oz', 28, 5, 22),
+(44, 'Dyson Supersonic Hair Dryer', 'Dyson Supersonic Hair Dryer', 399, 5, 22),
+(45, 'Maybelline Fit Me Foundation', 'Maybelline Fit Me Matte + Poreless Foundation', 7, 5, 23),
+(46, 'MAC Lipstick', 'MAC Matte Lipstick in Ruby Woo', 19, 5, 23),
+
+-- Health & Beauty - Personal Care
+(47, 'Philips Electric Toothbrush', 'Philips Sonicare ProtectiveClean 6100', 99, 5, 24),
+(48, 'Gillette Fusion ProGlide', 'Gillette Fusion ProGlide Razor with Flexball Technology', 15, 5, 24),
+
+-- Health & Beauty - Wellness Products
+(49, 'Nature\'s Bounty Fish Oil', 'Nature\'s Bounty Fish Oil 1000mg Softgels', 18, 5, 25),
+(50, 'Fitbit Charge 4', 'Fitbit Charge 4 Fitness and Activity Tracker', 149, 5, 25),
+
+-- Sports & Outdoors - Exercise Equipment
+(51, 'Bowflex Dumbbells', 'Bowflex SelectTech 552 Adjustable Dumbbells', 399, 6, 26),
+(52, 'NordicTrack Treadmill', 'NordicTrack T Series Treadmill', 899, 6, 26),
+
+-- Sports & Outdoors - Outdoor Gear
+(53, 'Coleman Tent', 'Coleman Sundome Camping Tent, 4-person', 119, 6, 27),
+(54, 'YETI Cooler', 'YETI Tundra 45 Cooler', 299, 6, 27),
+
+-- Sports & Outdoors - Sports Apparel
+(55, 'Nike Dri-FIT T-shirt', 'Nike Men\'s Dri-FIT Short Sleeve Training T-shirt', 35, 6, 28),
+(56, 'Adidas Track Pants', 'Adidas Men\'s Tiro 21 Track Pants', 50, 6, 28),
+
+-- Sports & Outdoors - Cycling
+(57, 'Schwinn Mountain Bike', 'Schwinn High Timber Youth/Adult Mountain Bike', 349, 6, 29),
+(58, 'Bell Bicycle Helmet', 'Bell Adrenaline Bike Helmet', 45, 6, 29),
+
+-- Sports & Outdoors - Camping Equipment
+(59, 'Sleeping Bag', 'TETON Sports Celsius Sleeping Bag', 79, 6, 30),
+(60, 'Camping Stove', 'Coleman Gas Camping Stove', 85, 6, 30),
+
+-- Toys & Games - Educational Toys
+(61, 'LEGO Classic Bricks', 'LEGO Classic Creative Brick Box', 49, 7, 31),
+(62, 'Melissa & Doug Puzzle', 'Melissa & Doug Wooden Jigsaw Puzzle', 19, 7, 31),
+
+-- Toys & Games - Action Figures
+(63, 'Marvel Avengers Action Figure', 'Marvel Avengers Thor Action Figure', 15, 7, 32),
+(64, 'Transformers Bumblebee', 'Transformers Bumblebee Action Figure', 20, 7, 32),
+
+-- Toys & Games - Board Games
+(65, 'Monopoly', 'Monopoly Classic Board Game', 25, 7, 33),
+(66, 'Catan', 'Catan The Board Game', 49, 7, 33),
+
+-- Toys & Games - Puzzles
+(67, 'Ravensburger Puzzle', 'Ravensburger 1000 Piece Puzzle', 22, 7, 34),
+(68, '3D Wooden Puzzle', '3D Wooden Mechanical Puzzle', 35, 7, 34),
+
+-- Toys & Games - Outdoor Toys
+
+(69, 'LEGO Mindstorms', 'Educational Robotics Kit', 300, 7, 31),
+(70, 'Melissa & Doug Puzzle', 'Wooden Educational Puzzle', 50, 7, 31),
+(71, 'Marvel Spider-Man Figure', 'Action Figure', 25, 7, 32),
+(72, 'Star Wars Darth Vader Figure', 'Action Figure', 30, 7, 32),
+(73, 'Monopoly Classic', 'Board Game', 35, 7, 33),
+(74, 'Catan', 'Board Game', 40, 7, 33),
+(75, 'Ravensburger Puzzle', '1000-Piece Puzzle', 20, 7, 34),
+(76, 'Buffalo Games Puzzle', '500-Piece Puzzle', 15, 7, 34),
+(77, 'Nerf Super Soaker', 'Outdoor Toy Water Gun', 25, 7, 35),
+(78, 'Little Tikes Trampoline', 'Outdoor Trampoline', 150, 7, 35),
+
+-- Books & Media
+(79, 'The Great Gatsby', 'Fiction Novel by F. Scott Fitzgerald', 15, 8, 36),
+(80, '1984', 'Fiction Novel by George Orwell', 12, 8, 36),
+(81, 'Sapiens', 'Non-Fiction Book by Yuval Noah Harari', 20, 8, 37),
+(82, 'Educated', 'Non-Fiction Memoir by Tara Westover', 18, 8, 37),
+(83, 'The Very Hungry Caterpillar', 'Children\'s Educational Book', 10, 8, 38),
+(84, 'Basic Economics', 'Educational Book by Thomas Sowell', 25, 8, 38),
+(85, 'Abbey Road', 'Music Album by The Beatles', 30, 8, 39),
+(86, 'Thriller', 'Music Album by Michael Jackson', 28, 8, 39),
+(87, 'The Godfather', 'Classic Movie DVD', 20, 8, 40),
+(88, 'Inception', 'Sci-Fi Movie Blu-Ray', 22, 8, 40),
+
+-- Automotive
+(89, 'WeatherTech Floor Mats', 'Car Floor Mats', 80, 9, 41),
+(90, 'Garmin GPS', 'Car Navigation System', 120, 9, 41),
+(91, 'Bell Qualifier Helmet', 'Motorcycle Helmet', 150, 9, 42),
+(92, 'Alpinestars Motorcycle Jacket', 'Riding Jacket', 200, 9, 42),
+(93, 'DeWalt Power Drill', 'Cordless Power Drill', 100, 9, 43),
+(94, 'Craftsman Tool Set', 'Mechanic Tool Set', 120, 9, 43),
+(95, 'Pioneer Car Stereo', 'Car Audio System', 250, 9, 44),
+(96, 'Kenwood Amplifier', 'Car Audio Amplifier', 200, 9, 44),
+(97, 'Bosch Spark Plugs', 'Car Engine Spark Plugs', 20, 9, 45),
+(98, 'K&N Air Filter', 'Car Engine Air Filter', 50, 9, 45),
+
+-- Food & Beverages
+(99, 'Doritos Nacho Cheese', 'Snack Pack', 5, 10, 46),
+(100, 'KIND Bars', 'Healthy Snack Bars', 10, 10, 46),
+(101, 'Coca-Cola', 'Beverage', 2, 10, 47),
+(102, 'Red Bull', 'Energy Drink', 3, 10, 47),
+(103, 'Kellogg\'s Corn Flakes', 'Breakfast Cereal', 4, 10, 48),
+(104, 'Barilla Pasta', 'Pack of Spaghetti', 6, 10, 48),
+(105, 'Organic Valley Milk', 'Organic Dairy Milk', 7, 10, 49);
+
