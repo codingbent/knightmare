@@ -1,0 +1,108 @@
+*{
+  margin: 0%;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width:450px){
+  .col{
+    width: 100%!important;
+  }
+}
+@media screen and (min-width:450px) and (max-width:992px) {
+  .col{
+    width: 40%!important;
+  }
+}
+@media screen and (min-width:992px) and (max-width: 1024px) {
+  .col {
+      flex: 0 0 auto;
+      width: 31%!important;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+  .col {
+      flex: 0 0 auto;
+      width: 23%!important;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .col {
+      flex: 0 0 auto;
+      width: 25%!important;
+  }
+}
+
+@media (min-width: 992px) {
+  .row-cols-lg-5>* {
+      -ms-flex: 0 0 20%;
+      flex: 0 0 24%!important;
+      max-width: 27%!important;
+  }
+}
+.add_product,.edit_product {
+  position: relative;
+  padding: 10%;
+  padding-top:5%;
+  background-color: #f7f7f7;
+}
+@media screen and (min-width:1024px) {
+  .add_product{
+    padding-left:25%;
+  }
+}
+.product_form{
+  background-color:white;
+  padding:5%;
+}
+.fixed-top{
+  position: relative;
+}
+table .table {
+  padding: 2%;
+  background-color: red;
+}
+.four .card{
+  position: relative;
+}
+.four .card:hover{
+  /* border: 1px solid green; */
+  box-shadow: 0px 0px 5px grey;
+  /* width: fit-content; */
+}
+.four a{
+  text-decoration: none;
+  color: black;
+}
+.four a:hover{
+  color: black;
+  text-decoration: none;
+}
+.image {
+  height: 250px;
+}
+
+.four .card.m-1 {
+  height: 500px;
+}
+
+@media (min-width: 576px) {
+  .display {
+      flex: 0 0 auto;
+      width: 30%!important;
+  }
+}
+
+.nav a:hover{
+  background-color: #007bff!important;
+  color: white;
+}
+@media screen and (max-width: 992px) {
+  .three .d-flex{
+    overflow-x: scroll;
+  }
+}
