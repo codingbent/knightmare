@@ -3,7 +3,7 @@
 include 'connection.php';
 
 // Initialize variables to store filter conditions
-$whereClause = "";
+$whereClause = "1=1";
 $parameters = array();
 
 // Process category filter
@@ -24,11 +24,11 @@ if (isset($_POST['minPrice']) && isset($_POST['maxPrice'])) {
 }
 
 // Prepare and execute the SQL query
-$sql = "SELECT * FROM product WHERE 1=1 $whereClause";
+$sql = "SELECT * FROM product WHERE $whereClause";
 $stmt = $con->prepare($sql);
 
 if (!empty($parameters)) {
-    $types = str_repeat('i', count($parameters)); // Use 'i' for integers, 's' for strings if needed
+    $types = str_repeat('i', count($parameters)); 
     $stmt->bind_param($types, ...$parameters);
 }
 

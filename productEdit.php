@@ -191,3 +191,7 @@ if (isset($_POST['submit'])) {
     // Trigger change event on initial load to populate subcategories
     document.getElementById('categorySelect').dispatchEvent(new Event('change'));
 </script>
+
+<?php
+include 'footer.php';
+?>

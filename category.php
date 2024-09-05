@@ -4,6 +4,10 @@ include 'connection.php';
 include 'nav.php';
 
 $search_text = '';
+$c_id = '';
+$selectedCategories = [];
+$minPrice = 0;
+$maxPrice = 0;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['search_text'])) {
@@ -13,14 +17,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['c_id'])) {
         $c_id = $_POST['c_id'];
     }
+
+    if (isset($_POST['categories'])) {
+        $selectedCategories = $_POST['categories'];
+    }
+
+    if (isset($_POST['minPrice'])) {
+        $minPrice = $_POST['minPrice'];
+    }
+
+    if (isset($_POST['maxPrice'])) {
+        $maxPrice = $_POST['maxPrice'];
+    }
 } else {
-    // Handle other cases (like navigating back or initial load)
     if (isset($_SESSION['c_id'])) {
         $c_id = $_SESSION['c_id'];
         unset($_SESSION['c_id']); // Clear session variable after use
     }
 
-    // Handle session storage for search_text (if necessary)
     echo "<script>
         if (sessionStorage.getItem('search_text')) {
             var searchText = sessionStorage.getItem('search_text');
@@ -31,64 +45,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </script>";
 }
 
-// Fetch max price for slider
 $sqlcost = "SELECT MAX(price) as max_price FROM product";
 $resultcost = $con->query($sqlcost);
 $rowcost = $resultcost->fetch_assoc();
 $maxPrice = $rowcost['max_price'];
 
+$sqlproduct = "SELECT * FROM product WHERE 1=1";
+
 if (!empty($search_text)) {
-    $sqlproduct = "SELECT p.*
-                    FROM product p
-                    LEFT JOIN category c ON p.c_id = c.category_id
-                    LEFT JOIN alternate_category ac ON c.category_id = ac.c_id
-                    WHERE p.title LIKE ? OR p.label LIKE ? OR c.category_name LIKE ? OR ac.alternate_names LIKE ?";
+    $sqlproduct .= " AND (title LIKE ? OR label LIKE ?)";
     $like_search_text = '%' . $search_text . '%';
-
-    $stmt = $con->prepare($sqlproduct);
-    $stmt->bind_param("ssss", $like_search_text, $like_search_text, $like_search_text, $like_search_text);
-    $stmt->execute();
-    $resultproduct = $stmt->get_result();
-
-} else if (!empty($c_id)) {
-    $sqlproduct = "SELECT * FROM product WHERE c_id=?";
-    $stmt = $con->prepare($sqlproduct);
-    $stmt->bind_param("i", $c_id);
-    $stmt->execute();
-    $resultproduct = $stmt->get_result();
-} else {
-    $sqlproduct = "SELECT * FROM product";
-    $resultproduct = $con->query($sqlproduct);
 }
 
-if (isset($_POST['categories']) && isset($_POST['minPrice']) && isset($_POST['maxPrice'])) {
-    $selectedCategories = $_POST['categories'];
-    $minPrice = $_POST['minPrice'];
-    $maxPrice = $_POST['maxPrice'];
+if (!empty($c_id)) {
+    $sqlproduct .= " AND c_id=?";
 }
-
-// Construct SQL query to fetch filtered products
-$sqlProducts = "SELECT p.p_id, p.title, p.label, p.price, p.image 
-               FROM product p 
-               JOIN category_brand cb ON p.p_id = cb.p_id";
-$resultproduct = $con->query($sqlProducts);
-
-// Conditions based on selected filters
-$whereConditions = [];
 
 if (!empty($selectedCategories)) {
-    $categoryFilter = implode(',', $selectedCategories);
-    $whereConditions[] = "cb.c_id IN ($categoryFilter)";
+    $sqlproduct .= " AND c_id IN (" . implode(',', array_fill(0, count($selectedCategories), '?')) . ")";
 }
 
-// $sqlCategories = "SELECT DISTINCT c.category_id, c.category_name
-//                   FROM category_brand cb
-//                   JOIN category c ON cb.c_id = c.category_id";
+if ($minPrice >= 0 && $maxPrice > 0) {
+    $sqlproduct .= " AND price BETWEEN ? AND ?";
+}
 
-// $resultCategories = $con->query($sqlCategories);
+$stmt = $con->prepare($sqlproduct);
+
+$params = [];
+$types = '';
+
+if (!empty($search_text)) {
+    $params[] = $like_search_text;
+    $params[] = $like_search_text;
+    $types .= 'ss';
+}
+
+if (!empty($c_id)) {
+    $params[] = $c_id;
+    $types .= 'i';
+}
+
+if (!empty($selectedCategories)) {
+    $params = array_merge($params, $selectedCategories);
+    $types .= str_repeat('i', count($selectedCategories));
+}
+
+if ($minPrice >= 0 && $maxPrice > 0) {
+    $params[] = $minPrice;
+    $params[] = $maxPrice;
+    $types .= 'ii';
+}
+
+if ($types) {
+    $stmt->bind_param($types, ...$params);
+}
+
+$stmt->execute();
+$resultproduct = $stmt->get_result();
 
 $sqlcategory = "SELECT * FROM category";
 $resultCategories = $con->query($sqlcategory);
+
+
 
 ?>
 
@@ -100,29 +118,25 @@ $resultCategories = $con->query($sqlcategory);
 <form id="filter-form">
     <div class="row">
         <aside class="col-sm-3 ms-5">
-        <div class="card mb-2">
-    <article class="card-group-item">
-        <header class="card-header"><h6 class="title">Category</h6></header>
-        <div class="filter-content">
-            <div class="list-group list-group-flush ms-4">
-                <div class="m-2">
-                    <?php
-                    if ($resultCategories->num_rows > 0) {
-                        while ($rowCategories = $resultCategories->fetch_assoc()) {
-                            echo '<input class="form-check-input me-2" type="checkbox" name="category[]" value="' . $rowCategories['category_id'] . '" id="' . $rowCategories['category_name'] . '"';
-                            if (isset($c_id) && $c_id == $rowCategories['category_id']) {
-                                echo ' checked';
-                            }
-                            echo '>';
-                            echo '<label for="' . $rowCategories['category_name'] . '">' . $rowCategories['category_name'] . '</label><br>';                            
-                        }
-                    }
-                    ?>
-                </div>
+            <div class="card mb-2">
+                <article class="card-group-item">
+                    <header class="card-header"><h6 class="title">Category</h6></header>
+                    <div class="filter-content">
+                        <div class="list-group list-group-flush ms-4">
+                            <div class="m-2">
+                                <?php
+                                if ($resultCategories->num_rows > 0) {
+                                    while ($rowCategories = $resultCategories->fetch_assoc()) {
+                                        echo '<input class="form-check-input me-2" type="checkbox" name="category[]" value="' . $rowCategories['category_id'] . '" id="' . $rowCategories['category_name'] . '">';
+                                        echo '<label for="' . $rowCategories['category_name'] . '">' . $rowCategories['category_name'] . '</label><br>';                            
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
-        </div>
-    </article>
-</div>
 
             <div class="card">
                 <article class="card-group-item">
@@ -172,32 +186,9 @@ $resultCategories = $con->query($sqlcategory);
     </div>
 </form>
 <?php
-    include 'footer.php';
+include 'footer.php';
 ?>
 <script>
-
-document.addEventListener("DOMContentLoaded", function() {
-        const showMoreLink = document.getElementById("show-more-link");
-        const hiddenItems = document.querySelectorAll('.hidden');
-        let currentIndex = 0;
-        const batchSize = 5;
-
-        function showNextBatch() {
-            for (let i = currentIndex; i < currentIndex + batchSize && i < hiddenItems.length; i++) {
-                hiddenItems[i].classList.remove('hidden');
-            }
-            currentIndex += batchSize;
-            if (currentIndex >= hiddenItems.length) {
-                showMoreLink.style.display = 'none';
-            }
-        }
-
-        showMoreLink.addEventListener("click", function(event) {
-            event.preventDefault();
-            showNextBatch();
-        });
-    });
-
     function filterProducts() {
         var selectedCategories = [];
         $("input[name='category[]']:checked").each(function() {
@@ -219,16 +210,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 $('#product-container').html(response);
             }
         });
-
     }
 
     $(document).ready(function() {
         $("input[name='category[]']").change(function() {
-            filterProducts();
-        });
-    });
-    $(document).ready(function() {
-        $(".form-check-input, #inputmin, #inputmax").change(function() {
             filterProducts();
         });
 
@@ -255,5 +240,4 @@ document.addEventListener("DOMContentLoaded", function() {
         $("#priceRange").slider("values", [0, maxPrice]);
         filterProducts();
     }
-
 </script>
