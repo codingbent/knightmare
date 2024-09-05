@@ -57,19 +57,19 @@ $resultcategory=$con->query($sqlcategory);
 <div class="container">                           
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-                  <a class="navbar-brand fs-3 fw-bold" href="index.php"><img src="images/logo.jpg" style="width:30px;transform:scale(4.0);" alt=""></a>
+                  <a class="navbar-brand fs-3 fw-bold" href="index.php"><img src="images/logo.jpg" style="width:30px;transform:scale(3.0);" alt=""></a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <form class="d-flex mx-auto"  onsubmit="return false;">
+                    <form class="d-flex align-items-center mx-auto"  onsubmit="return false;">
                     <input class="form-control text" id="search_text" type="search" placeholder="Search" aria-label="Search" list="product">
                         <?php
-            if ($resultcat->num_rows > 0) {
-                while ($rowcat = $resultcat->fetch_assoc()) {
-                    echo '<option value="' . $rowcat['title'] . '" data-id="' . $rowcat['p_id'] . '"></option>';
-                }
-            }
+                          // if ($resultcat->num_rows > 0) {
+                          //     while ($rowcat = $resultcat->fetch_assoc()) {
+                          //         echo '<option value="' . $rowcat['title'] . '" data-id="' . $rowcat['p_id'] . '"></option>';
+                          //     }
+                          // }
             ?> 
           <button class="btn btn-outline-success" onclick="search()">Search</button>
         </form>

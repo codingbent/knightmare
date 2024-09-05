@@ -27,12 +27,6 @@ if (isset($_SESSION['p_id'])) {
     $stmt->execute();
     $resultcart = $stmt->get_result();
 
-    $sqldetails="SELECT * FROM product_details where p_id=?";
-    $stmt = $con->prepare($sqldetails);
-    $stmt->bind_param("i", $p_id);
-    $stmt->execute();
-    $resultdetails = $stmt->get_result();
-
 
     if (!$resultproduct) {
         die("Error in product query: " . $con->error);

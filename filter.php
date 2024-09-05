@@ -6,14 +6,7 @@ include 'connection.php';
 $whereClause = "";
 $parameters = array();
 
-// Process selected brands
-if (isset($_POST['brands']) && !empty($_POST['brands'])) {
-    $brands = $_POST['brands'];
-    $brandPlaceholders = str_repeat('?,', count($brands) - 1) . '?';
-    $whereClause .= " AND brand_id IN ($brandPlaceholders)";
-    $parameters = array_merge($parameters, $brands);
-}
-
+// Process category filter
 if (isset($_POST['categories']) && !empty($_POST['categories'])) {
     $categories = $_POST['categories'];
     $categoryPlaceholders = str_repeat('?,', count($categories) - 1) . '?';
@@ -30,11 +23,12 @@ if (isset($_POST['minPrice']) && isset($_POST['maxPrice'])) {
     $parameters[] = $maxPrice;
 }
 
-$sql = "SELECT * FROM product WHERE 1 $whereClause";
+// Prepare and execute the SQL query
+$sql = "SELECT * FROM product WHERE 1=1 $whereClause";
 $stmt = $con->prepare($sql);
 
 if (!empty($parameters)) {
-    $types = str_repeat('s', count($parameters)); 
+    $types = str_repeat('i', count($parameters)); // Use 'i' for integers, 's' for strings if needed
     $stmt->bind_param($types, ...$parameters);
 }
 
@@ -60,20 +54,19 @@ if ($result->num_rows > 0) {
 $stmt->close();
 $con->close();
 ?>
+
 <script>
     function description(p_id) {
-        console.log(p_id);
-    $.ajax({
-    url: "set_session.php",
-    type: "POST",
-    data: {p_id: p_id},
-    success: function(response){
-      window.location.href = "description.php";
-    },
-    error: function(xhr, status, error){
-      console.error(error);
+        $.ajax({
+            url: "set_session.php",
+            type: "POST",
+            data: { p_id: p_id },
+            success: function(response) {
+                window.location.href = "description.php";
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
     }
-  });
-  console.log(p_id);
-}
 </script>
