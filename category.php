@@ -151,10 +151,10 @@ $resultCategories = $con->query($sqlcategory);
                                     <div id="priceRange" class="slider"></div>
                                     <div class="mt-3">
                                         <label for="minValueDisplay">Min: </label>
-                                        <span id="minValueDisplay">₹0</span>
+                                        <span id="minValueDisplay">$0</span>
                                         <input type="hidden" name="minPrice" id="minPrice" value="0">
                                         <label for="maxValueDisplay" class="ml-3">Max: </label>
-                                        <span id="maxValueDisplay">₹<?php echo $maxPrice; ?></span>
+                                        <span id="maxValueDisplay">$<?php echo $maxPrice; ?></span>
                                         <input type="hidden" name="maxPrice" id="maxPrice" value="<?php echo $maxPrice; ?>">
                                     </div>
                                 </div>
@@ -175,7 +175,7 @@ $resultCategories = $con->query($sqlcategory);
                         echo '<div class="card-body">';
                         echo '<h5 class="card-title fs-4 text">' . $rowproduct['title'] . '</h5>';
                         echo '<p class="card-text fs-6 text">' . $rowproduct['label'] . '</p>';
-                        echo '<p class="card-text fs-5 text"><b>₹' . $rowproduct['price'] . '</b></p>';
+                        echo '<p class="card-text fs-5 text"><b>$' . $rowproduct['price'] . '</b></p>';
                         echo '</div>';
                         echo '</div></a>';
                     }
@@ -189,6 +189,20 @@ $resultCategories = $con->query($sqlcategory);
 include 'footer.php';
 ?>
 <script>
+
+function description(p_id) {
+        $.ajax({
+            url: "set_session.php",
+            type: "POST",
+            data: { p_id: p_id },
+            success: function(response) {
+                window.location.href = "description.php";
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
     function filterProducts() {
         var selectedCategories = [];
         $("input[name='category[]']:checked").each(function() {
@@ -223,8 +237,8 @@ include 'footer.php';
             max: maxPrice,
             values: [0, maxPrice],
             slide: function(event, ui) {
-                $("#minValueDisplay").text("₹" + ui.values[0]);
-                $("#maxValueDisplay").text("₹" + ui.values[1]);
+                $("#minValueDisplay").text("$" + ui.values[0]);
+                $("#maxValueDisplay").text("$" + ui.values[1]);
                 $("#minPrice").val(ui.values[0]);
                 $("#maxPrice").val(ui.values[1]);
             },
