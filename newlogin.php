@@ -113,13 +113,16 @@
     <p>
      Welcome back! Select method to log in:
     </p>
-    <div class="social-buttons">
+    <!-- <div class="social-buttons">
      <button class="btn btn-light">
       <i class="fab fa-google">
       </i>
       Google
      </button>
-    </div>
+    </div> -->
+    <a href="google_login.php">
+        <button type='button'>login with google</button>
+    </a>
     <p class="text-center">
      or continue with email
     </p>
@@ -151,7 +154,7 @@
     </div>
    </div>
    <div class="right-panel">
-    <img alt="Illustration of connecting with various applications" height="300" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-BVbpSZmLndA7MfHIxv2ahIKS/user-IBY8IaMXtVn7IVIdZeyvjx16/img-BAVjcdqLL9dEE3XRLR8Rev36.png?st=2024-09-05T13%3A15%3A34Z&amp;se=2024-09-05T15%3A15%3A34Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-04T21%3A23%3A30Z&amp;ske=2024-09-05T21%3A23%3A30Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=igF82TgOv6YPB%2B3Omnf9MNuFUyzCzWHB1uKl6tPy5RU%3D" width="300"/>
+    <img alt="Illustration of connecting with various applications" height="300" src="images/logo.jpg" width="300"/>
     <h3>
      Connect application with Google.
     </h3>
