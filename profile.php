@@ -352,6 +352,7 @@ include 'footer.php';
                 .catch(error => {
                     console.error('Error:', error);
                     alert('Error saving changes.');
+                    //hello
                 });
             });
         });
