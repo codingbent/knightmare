@@ -1,7 +1,7 @@
 <html>
  <head>
   <title>
-   Login Page
+   Signup Page
   </title>
   <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
@@ -105,10 +105,10 @@
     <div class="logo">
     </div>
     <h2>
-     Log in to your Account
+     Create your Account
     </h2>
     <p>
-     Welcome back! Select method to log in:
+     Welcome! Select method to sign up:
     </p>
     <div class="social-buttons">
      <button class="btn btn-light">
@@ -118,37 +118,36 @@
      </button>
     </div>
     <p class="text-center">
-     or continue with email
+     or sign up with email
     </p>
     <form>
+     <div class="form-group">
+      <input class="form-control" placeholder="Name" type="text"/>
+     </div>
      <div class="form-group">
       <input class="form-control" placeholder="Email" type="email"/>
      </div>
      <div class="form-group">
       <input class="form-control" placeholder="Password" type="password"/>
      </div>
-     <div class="d-flex justify-content-between align-items-center">
-      <div class="forgot-password">
-       <a href="#">
-        Forgot Password?
-       </a>
-      </div>
+     <div class="form-group">
+      <input class="form-control" placeholder="Confirm Password" type="password"/>
      </div>
      <button class="btn btn-primary w-100 mt-3" type="submit">
-      Log in
+      Sign up
      </button>
     </form>
     <div class="create-account">
      <p>
-      Don't have an account?
+      Already have an account?
       <a href="#">
-       Create an account
+       Log in
       </a>
      </p>
     </div>
    </div>
    <div class="right-panel">
-    <img alt="Illustration of connecting with various applications" src="./images/logo.jpg"/>
+    <img alt="Illustration of connecting with various applications" src ="./images/logo.jpg">
     <h4>
      Connect Your Store with Google.
     </h4>
