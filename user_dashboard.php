@@ -63,11 +63,6 @@ include 'nav.php';
         <div class="content">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2>User Dashboard</h2>
-                <div class="d-flex align-items-center">
-                    <input type="text" class="form-control me-2" placeholder="Search Here">
-                    <i class="fas fa-bell me-3"></i>
-                    <i class="fas fa-user-circle"></i>
-                </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-4">
@@ -174,6 +169,6 @@ include 'nav.php';
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</body>
-</html>
+    <?php
+    include 'footer.php';
+    ?>
