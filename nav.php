@@ -197,11 +197,11 @@ function viewAll(c_id) {
 }
 function dashboard(c_id){
   $.ajax({
-    url:"userdashboard.php",
+    url:"profile.php",
     type:"POST",
     data:{c_id: c_id},
     success:function(){
-      window.location.href="userDashboard.php"
+      window.location.href="profile.php"
     }
   });
   console.log(c_id);
