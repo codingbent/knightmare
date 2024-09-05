@@ -1,0 +1,164 @@
+<html>
+ <head>
+  <title>
+   Login Page
+  </title>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            background-color: #e9eef5;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            overflow: hidden;
+        }
+        .left-panel, .right-panel {
+            padding: 40px;
+            flex: 1;
+        }
+        .left-panel {
+            background-color: #fff;
+        }
+        .right-panel {
+            background-color: #0052cc;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .right-panel img {
+            max-width: 100%;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .logo h1 {
+            font-size: 24px;
+            color: #0052cc;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            border-radius: 5px;
+            height: 45px;
+        }
+        .btn-primary {
+            background-color: #0052cc;
+            border: none;
+            border-radius: 5px;
+            height: 45px;
+            font-size: 16px;
+        }
+        .btn-primary:hover {
+            background-color: #0041a8;
+        }
+        .social-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .social-buttons .btn {
+            flex: 1;
+            margin: 0 5px;
+            border-radius: 5px;
+            height: 45px;
+            font-size: 16px;
+        }
+        .social-buttons .btn:first-child {
+            margin-left: 0;
+        }
+        .social-buttons .btn:last-child {
+            margin-right: 0;
+        }
+        .form-check-label {
+            margin-left: 10px;
+        }
+        .forgot-password {
+            text-align: right;
+        }
+        .forgot-password a {
+            color: #0052cc;
+        }
+        .create-account {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .create-account a {
+            color: #0052cc;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="left-panel">
+    <div class="logo">
+     <h1>
+      Knightmare
+     </h1>
+    </div>
+    <h2>
+     Log in to your Account
+    </h2>
+    <p>
+     Welcome back! Select method to log in:
+    </p>
+    <div class="social-buttons">
+     <button class="btn btn-light">
+      <i class="fab fa-google">
+      </i>
+      Google
+     </button>
+    </div>
+    <p class="text-center">
+     or continue with email
+    </p>
+    <form>
+     <div class="form-group">
+      <input class="form-control" placeholder="Email" type="email"/>
+     </div>
+     <div class="form-group">
+      <input class="form-control" placeholder="Password" type="password"/>
+     </div>
+     <div class="d-flex justify-content-between align-items-center">
+      <div class="forgot-password">
+       <a href="#">
+        Forgot Password?
+       </a>
+      </div>
+     </div>
+     <button class="btn btn-primary w-100 mt-3" type="submit">
+      Log in
+     </button>
+    </form>
+    <div class="create-account">
+     <p>
+      Don't have an account?
+      <a href="#">
+       Create an account
+      </a>
+     </p>
+    </div>
+   </div>
+   <div class="right-panel">
+    <img alt="Illustration of connecting with various applications" height="300" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-BVbpSZmLndA7MfHIxv2ahIKS/user-IBY8IaMXtVn7IVIdZeyvjx16/img-BAVjcdqLL9dEE3XRLR8Rev36.png?st=2024-09-05T13%3A15%3A34Z&amp;se=2024-09-05T15%3A15%3A34Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-04T21%3A23%3A30Z&amp;ske=2024-09-05T21%3A23%3A30Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=igF82TgOv6YPB%2B3Omnf9MNuFUyzCzWHB1uKl6tPy5RU%3D" width="300"/>
+    <h3>
+     Connect application with Google.
+    </h3>
+    <p>
+     Know your own dashboard.
+    </p>
+   </div>
+  </div>
+ </body>
+</html>
