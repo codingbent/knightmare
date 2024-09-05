@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db_name="ecommerce";
+$db_name="knightmare";
 
 // Create connection
 $con =mysqli_connect($servername, $username, $password, $db_name);
