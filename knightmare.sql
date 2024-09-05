@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 05, 2024 at 09:38 PM
+-- Generation Time: Sep 05, 2024 at 10:27 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -206,6 +206,13 @@ CREATE TABLE `orders` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `user_id`, `order_date`, `status`, `product_id`, `quantity`) VALUES
+(11, 2, '2024-09-05 22:21:40', 'Pending', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -231,10 +238,10 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`p_id`, `title`, `label`, `price`, `image`, `image2`, `image3`, `c_id`, `sub_c_id`) VALUES
 (1, 'iPhone 13', 'Apple iPhone 13, 128GB, 5G', 999, 'images/iphone15_1.jpg', NULL, NULL, 1, 1),
 (2, 'Samsung Galaxy S21', 'Samsung Galaxy S21, 128GB, 5G', 899, 'images/samsung-galaxy-a34.webp', NULL, NULL, 1, 1),
-(3, 'MacBook Pro', 'Apple MacBook Pro 13-inch, M1 Chip', 1299, NULL, NULL, NULL, 1, 2),
-(4, 'Dell XPS 13', 'Dell XPS 13, 11th Gen Intel Core', 1199, NULL, NULL, NULL, 1, 2),
-(5, 'iPad Pro', 'Apple iPad Pro 12.9-inch, M1 Chip', 1099, NULL, NULL, NULL, 1, 3),
-(6, 'Samsung Galaxy Tab S7', 'Samsung Galaxy Tab S7, 128GB', 699, NULL, NULL, NULL, 1, 3),
+(3, 'MacBook Pro', 'Apple MacBook Pro 13-inch, M1 Chip', 1299, 'images/mac.jpg', NULL, NULL, 1, 2),
+(4, 'Dell XPS 13', 'Dell XPS 13, 11th Gen Intel Core', 1199, 'images/dell laptop.webp', NULL, NULL, 1, 2),
+(5, 'iPad Pro', 'Apple iPad Pro 12.9-inch, M1 Chip', 1099, 'images/ipad.jpg', NULL, NULL, 1, 3),
+(6, 'Samsung Galaxy Tab S7', 'Samsung Galaxy Tab S7, 128GB', 699, 'images/Samsung Galaxy Tab.jfif', NULL, NULL, 1, 3),
 (7, 'Canon EOS R5', 'Canon EOS R5, Mirrorless Camera, 45MP', 3899, NULL, NULL, NULL, 1, 4),
 (8, 'Sony Alpha A7 III', 'Sony Alpha A7 III, Full Frame Mirrorless', 1999, NULL, NULL, NULL, 1, 4),
 (9, 'LG OLED C1', 'LG OLED C1, 55-inch 4K Smart TV', 1299, NULL, NULL, NULL, 1, 5),
@@ -519,7 +526,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -543,7 +550,7 @@ ALTER TABLE `favorite`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product`
