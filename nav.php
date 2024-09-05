@@ -97,7 +97,7 @@ $resultcategory=$con->query($sqlcategory);
                           echo '<li><a class="dropdown-item" href="admin_dashboard.php">Admin Dashboard</a></li>';
                       }
                       if (@$_SESSION['is_admin'] == 0) {
-                        echo '<li><a class="dropdown-item" href="user_dashboard.php">Admin Dashboard</a></li>';
+                        echo '<li><a class="dropdown-item" href="user_dashboard.php">Dashboard</a></li>';
                     }
                       
                       echo '<li><a class="dropdown-item" href="logout.php">Log Out</a></li>
