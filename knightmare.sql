@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2024 at 01:15 PM
+-- Generation Time: Sep 05, 2024 at 10:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecommerce`
+-- Database: `knightmare`
 --
 
 -- --------------------------------------------------------
@@ -251,7 +251,8 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`user_id`, `firstname`, `lastname`, `email`, `pass`, `role`) VALUES
 (1, 'abhed', 'agarwal', 'abhed@gmail.com', '1234567890', 2),
 (2, 'Sandeep', 'Sharma', 'sandeep@gmail.com', '12345', 0),
-(3, 'Nitesh', 'kumar', 'nitesh@gmail.com', 'asdfghjkl', 1);
+(3, 'Nitesh', 'kumar', 'nitesh@gmail.com', 'asdfghjkl', 1),
+(4, 'shashank', 'ji', 'shashank.229303430@muj.manipal', '1234', 0);
 
 -- --------------------------------------------------------
 
@@ -603,7 +604,7 @@ ALTER TABLE `category_brand`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `favorite`
