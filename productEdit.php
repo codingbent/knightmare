@@ -187,7 +187,6 @@ if (isset($_POST['submit'])) {
         };
         xhr.send();
     });
-
     // Trigger change event on initial load to populate subcategories
     document.getElementById('categorySelect').dispatchEvent(new Event('change'));
 </script>
